@@ -174,38 +174,6 @@
             app:layout_constraintStart_toStartOf="@id/registerLeftGuideline"
             app:layout_constraintTop_toBottomOf="@id/termsAndConditions" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="40dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/registerRightGuideline"
-            app:layout_constraintStart_toStartOf="@id/registerLeftGuideline"
-            app:layout_constraintTop_toBottomOf="@id/register_button">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/already_have_an_account_text"
-                android:textColor="@color/darker"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/register_login_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:text="@string/login_text"
-                android:textColor="@color/loginRegisterBtnColor"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/registerLeftGuideline"
