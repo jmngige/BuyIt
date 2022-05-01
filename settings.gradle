@@ -4,6 +4,7 @@ pluginManagement {
         google()
         maven { url 'https://jitpack.io' }
         mavenCentral()
+        jcenter()
     }
 }
 dependencyResolutionManagement {
@@ -12,6 +13,7 @@ dependencyResolutionManagement {
         google()
         maven { url 'https://jitpack.io' }
         mavenCentral()
+        jcenter()
     }
 }
 rootProject.name = "E-Shop"
