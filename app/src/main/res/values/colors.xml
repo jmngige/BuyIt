@@ -1,10 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="light_green_700">#5EFC82</color>
+    <color name="medium_green_700">#00C853</color>
+    <color name="dark_green_700">#009624</color>
+    <color name="medium_green_800">#2E7D32</color>
+    <color name="dark_green_800">#005005</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="green">#2e7d32</color>
+    <color name="red">#e22121</color>
+    <color name="yellow">#ffeb3b</color>
+    <color name="medium_dark">#1B1C1E</color>
+    <color name="light_dark">#2B2B2B</color>
+    <color name="light_grey">#e0e0e0</color>
+    <color name="medium_grey">#BCB9B9</color>
+    <color name="bg_grey">#918D8D</color>
+    <color name="dark_grey">#1b1b1b</color>
+    <color name="darker">#151b20</color>
+    <color name="dark">#313C44</color>
+
+
+    <color name="strokeColor">#918D8D</color>
+
+    <color name="light_green_color">#505efc82</color>
+    <color name="tabLayoutBackground">#009624</color>
+
+    <color name="splash_background">#00C853</color>
+    <color name="splash_background2">#c7ede6</color>
+
+    <!-- Recipe Items card Background -->
+    <color name="recipeItemBackground">@color/white</color>
+    <color name="recipeItemCardStrokeColor">#918D8D</color>
+
+    <!-- Ingredient cardView colors -->
+    <color name="ingredient_item_stroke_color">#BCB9B9</color>
+    <color name="ingredient_view_bg">@color/white</color>
+    <color name="card_bg_color">@color/white</color>
+
+    <!-- favourites item layout -->
+    <color name="favouritesCardBackground">@color/white</color>
+    <color name="favouritesCardStrokeColor">#918D8D</color>
+    <color name="selectedFavouritesCardBackground">#50009624</color>
+    <color name="selectedFavouritesCardStrokeColor">#009624</color>
+
+    <!-- contextual action bar -->
+    <color name="contextualModeStatusBarColor">@color/darker</color>
+    <color name="contextualModeActionBarColor">@color/dark</color>
+    <color name="normalModeStatusBarColor">@color/dark_green_700</color>
+
 </resources>
