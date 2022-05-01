@@ -1,10 +1,12 @@
 package com.starsolns.e_shop.ui.fragments
 
+import android.os.Build
 import android.os.Bundle
+import android.view.*
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.google.android.material.tabs.TabLayoutMediator
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentAccessBinding
@@ -21,6 +23,11 @@ class AccessFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentAccessBinding.inflate(layoutInflater, container, false)
+
+        /** set status bar property */
+        val windowInsetsController = ViewCompat.getWindowInsetsController(requireActivity().window.decorView)
+        windowInsetsController?.systemBarsBehavior =  WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        windowInsetsController?.hide(WindowInsetsCompat.Type.statusBars())
 
         val fragments = ArrayList<Fragment>()
         fragments.add(LoginFragment())
