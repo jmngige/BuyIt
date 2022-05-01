@@ -28,6 +28,12 @@
     <!-- Access TabLayout -->
     <color name="accessTabLayoutBackground">#00C853</color>
 
+    <!-- Login Screen Colors -->
+    <color name="forgotPasswordColor">#00C853</color>
+    <color name="buttonBackgroundTint">#00C853</color>
+    <color name="loginRegisterBtnColor">#00C853</color>
+
+
     <color name="splash_background">#00C853</color>
     <color name="splash_background2">#c7ede6</color>
 
@@ -50,5 +56,13 @@
     <color name="contextualModeStatusBarColor">@color/darker</color>
     <color name="contextualModeActionBarColor">@color/dark</color>
     <color name="normalModeStatusBarColor">@color/dark_green_700</color>
+
+
+
+
+
+
+
+
 
 </resources>
