@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.firebase.crashlytics'
 }
 
     apply plugin: 'com.google.gms.google-services'
@@ -54,12 +55,21 @@ dependencies {
     //firebase dep
     implementation "com.google.firebase:firebase-bom:29.3.1"
     implementation 'com.google.firebase:firebase-analytics-ktx:20.1.2'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.1.1'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.10'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
+
+
+    //admob dep
+    implementation 'com.google.android.gms:play-services-ads:20.6.0'
 
     //spinkit
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 
     //navigation dep
-    def nav_version = "2.4.1"
+    def nav_version = "2.4.2"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
@@ -72,7 +82,7 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
 
     //lifecycle dep
-    def lifecycle_version = "2.5.0-alpha05"
+    def lifecycle_version = "2.5.0-beta01"
     def arch_version = "2.1.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
@@ -92,6 +102,5 @@ dependencies {
 
     //coil dep
     implementation "io.coil-kt:coil:2.0.0-rc02"
-
 
 }
