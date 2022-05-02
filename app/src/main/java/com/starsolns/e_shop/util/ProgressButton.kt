@@ -17,7 +17,7 @@ class ProgressButton(ctx: Context, view: View) {
     }
 
     fun showRegister(){
-        btn_text.text = "Register"
+        btn_text.text = "Create Account"
     }
 
     fun showProgressBar(){

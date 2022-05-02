@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBindings
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentLoginBinding
+import com.starsolns.e_shop.util.ProgressButton
 
 class LoginFragment : Fragment() {
 
@@ -17,6 +18,7 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var buttonView: View
+    private lateinit var dialog: ProgressButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +28,9 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
 
         buttonView = binding.loginButton.loginRegisterAccessButton
+
+        dialog = ProgressButton(requireContext(), buttonView)
+        dialog.showLogin()
 
         buttonView.setOnClickListener {
             validateAndLoginUser()
