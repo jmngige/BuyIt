@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.viewbinding.ViewBindings
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentLoginBinding
 
@@ -15,6 +16,8 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var buttonView: View
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,7 +25,9 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
 
-        binding.loginButton.setOnClickListener {
+        buttonView = binding.loginButton.loginRegisterAccessButton
+
+        buttonView.setOnClickListener {
             validateAndLoginUser()
         }
 
