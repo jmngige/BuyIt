@@ -8,7 +8,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -33,6 +37,14 @@ class ForgotPasswordFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentForgotPasswordBinding.inflate(layoutInflater, container, false)
+
+        val windowInsetsController = ViewCompat.getWindowInsetsController(requireActivity().window.decorView)
+        windowInsetsController?.show(WindowInsetsCompat.Type.statusBars())
+
+        requireActivity().window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+
 
         auth = Firebase.auth
 
