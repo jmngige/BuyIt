@@ -16,4 +16,8 @@
     <string name="confirm_password_hint">Confirm Password</string>
     <string name="create_account_text">Create Account</string>
     <string name="already_have_an_account_text">Already have an account?</string>
+    <string name="forgot_password_text">Forgot Password</string>
+    <string name="forgot_password_message">Enter the email address associated with your account below. We will send you a link to reset your password</string>
+    <string name="reset_link_text">Didn\'t receive a reset link?</string>
+    <string name="resend_link_text">Resend</string>
 </resources>

@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/access_background_btn.xml" value="0.145" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/forgot_pass_header_bg.xml" value="0.136" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/splash_background.xml" value="0.145" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/splash_image.xml" value="0.145" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/layout/activity_splash.xml" value="0.2046875" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/layout/fragment_access.xml" value="0.2046875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/layout/fragment_forgot_password.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/layout/fragment_home.xml" value="0.190625" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/layout/fragment_register.xml" value="0.22" />
