@@ -20,6 +20,10 @@ class ProgressButton(ctx: Context, view: View) {
         btn_text.text = "Create Account"
     }
 
+    fun showSubmit(){
+        btn_text.text = "Submit"
+    }
+
     fun showProgressBar(){
         progressBar.visibility = View.VISIBLE
         btn_text.text = "Please wait..."
@@ -28,5 +32,10 @@ class ProgressButton(ctx: Context, view: View) {
     fun dismissProgressBar(){
         progressBar.visibility = View.INVISIBLE
         btn_text.text = "Successful"
+    }
+
+    fun dismissResetProgressBar(){
+        progressBar.visibility = View.INVISIBLE
+        btn_text.text = "Link Sent Successfully"
     }
 }
