@@ -36,10 +36,11 @@ class ForgotPasswordFragment : Fragment() {
 
         auth = Firebase.auth
 
+        buttonView = binding.submitForgotPasswordButton.loginRegisterAccessButton
+
         dialog = ProgressButton(requireContext(), buttonView)
         dialog.showSubmit()
 
-        buttonView = binding.submitForgotPasswordButton.loginRegisterAccessButton
         buttonView.setOnClickListener {
             if(validateInputs()){
                sendResetPasswordLink()
@@ -58,7 +59,7 @@ class ForgotPasswordFragment : Fragment() {
         }else{
             binding.txtForgotEmailInput.helperText = null
         }
-        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             binding.txtForgotEmailInput.helperText = "Enter a valid Email"
             return false
         }else{
@@ -74,7 +75,7 @@ class ForgotPasswordFragment : Fragment() {
             if(task.isSuccessful){
                 dialog.dismissResetProgressBar()
                 Handler(Looper.getMainLooper()).postDelayed({
-                    findNavController().navigate(R.id.action_forgotPasswordFragment_to_loginFragment)
+                    findNavController().navigate(R.id.action_forgotPasswordFragment_to_accessFragment)
                 }, 1800)
             }else {
                 dialog.dismissResetProgressBar()
