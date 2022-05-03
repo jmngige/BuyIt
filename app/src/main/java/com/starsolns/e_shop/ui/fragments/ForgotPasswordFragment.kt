@@ -59,6 +59,12 @@ class ForgotPasswordFragment : Fragment() {
             }
         }
 
+        binding.resendEmailLikButton.setOnClickListener {
+            if(validateInputs()){
+                sendResetPasswordLink()
+            }
+        }
+
 
         return binding.root
     }

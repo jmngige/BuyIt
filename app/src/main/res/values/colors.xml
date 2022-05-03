@@ -15,6 +15,7 @@
     <color name="light_dark">#2B2B2B</color>
     <color name="light_grey">#e0e0e0</color>
     <color name="medium_grey">#BCB9B9</color>
+    <color name="grey">#8F8F8F</color>
     <color name="bg_grey">#918D8D</color>
     <color name="dark_grey">#1b1b1b</color>
     <color name="darker">#151b20</color>
@@ -30,6 +31,7 @@
 
     <!-- Login Screen Colors -->
     <color name="forgotPasswordColor">#00C853</color>
+    <color name="forgotPasswordColorBackground">#60005005</color>
     <color name="buttonBackgroundTint">#00C853</color>
     <color name="loginRegisterBtnColor">#00C853</color>
 
