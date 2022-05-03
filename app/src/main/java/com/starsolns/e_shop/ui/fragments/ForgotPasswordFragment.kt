@@ -78,7 +78,7 @@ class ForgotPasswordFragment : Fragment() {
                     findNavController().navigate(R.id.action_forgotPasswordFragment_to_accessFragment)
                 }, 1800)
             }else {
-                dialog.dismissResetProgressBar()
+                dialog.dismissResetProgressBarError()
                 Toast.makeText(requireContext(), task.exception!!.message.toString(), Toast.LENGTH_SHORT).show()
             }
         }

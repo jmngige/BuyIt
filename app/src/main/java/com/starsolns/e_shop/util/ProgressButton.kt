@@ -38,4 +38,9 @@ class ProgressButton(ctx: Context, view: View) {
         progressBar.visibility = View.INVISIBLE
         btn_text.text = "Link Sent Successfully"
     }
+
+    fun dismissResetProgressBarError(){
+        progressBar.visibility = View.INVISIBLE
+        btn_text.text = "Submit"
+    }
 }
