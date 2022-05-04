@@ -10,10 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EShop">
         <activity
+            android:name=".ui.activities.HomeActivity"
+            android:theme="@style/Theme.HomeActivityStyle"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.SplashActivity"
-            android:theme="@style/Theme.EShop"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:exported="true">
+            android:theme="@style/Theme.EShop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,9 +25,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:theme="@style/Theme.EShop"
-            android:name=".ui.activities.MainActivity">
-        </activity>
+            android:name=".ui.activities.MainActivity"
+            android:theme="@style/Theme.EShop" />
     </application>
 
 </manifest>

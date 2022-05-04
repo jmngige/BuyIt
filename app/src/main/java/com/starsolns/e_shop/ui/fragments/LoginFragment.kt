@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import androidx.viewbinding.ViewBindings
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -84,7 +83,7 @@ class LoginFragment : Fragment() {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task->
             if(task.isSuccessful){
                 dialog.dismissProgressBar()
-                Toast.makeText(requireContext(), "viola you're logged in", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_accessFragment_to_homeActivity)
             }
             else {
                 dialog.dismissProgressBar()
@@ -92,6 +91,7 @@ class LoginFragment : Fragment() {
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

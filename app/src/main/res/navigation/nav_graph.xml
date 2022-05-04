@@ -15,6 +15,11 @@
             app:destination="@id/forgotPasswordFragment"
             app:popUpTo="@id/forgotPasswordFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_accessFragment_to_homeActivity"
+            app:destination="@id/homeActivity"
+            app:popUpTo="@id/homeActivity"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
@@ -27,4 +32,9 @@
             app:popUpTo="@id/accessFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.starsolns.e_shop.ui.activities.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
 </navigation>

@@ -18,7 +18,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentRegisterBinding
-import com.starsolns.e_shop.model.User
+import com.starsolns.e_shop.model.Users
+import com.starsolns.e_shop.util.Constants
 import com.starsolns.e_shop.util.ProgressButton
 
 class RegisterFragment : Fragment() {
@@ -135,7 +136,7 @@ class RegisterFragment : Fragment() {
                 if (task.isSuccessful){
                     val fUser: FirebaseUser = task.result!!.user!!
 
-                    val user = User(
+                    val user = Users(
                         fUser.uid,
                         firstName,
                         lastName,
@@ -152,12 +153,12 @@ class RegisterFragment : Fragment() {
 
     }
 
-    private fun registerUserDetails(user: User) {
+    private fun registerUserDetails(user: Users) {
 
         //val db = FirebaseFirestore.getInstance()
         val db = Firebase.firestore
 
-        db.collection("Users")
+        db.collection(Constants.USERS)
             .document(user.id)
             .set(user, SetOptions.merge())
             .addOnSuccessListener {
