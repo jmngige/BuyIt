@@ -10,10 +10,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentRegisterBinding
+import com.starsolns.e_shop.model.User
 import com.starsolns.e_shop.util.ProgressButton
 
 class RegisterFragment : Fragment() {
@@ -123,17 +128,44 @@ class RegisterFragment : Fragment() {
     }
 
     private fun createUserAccount(firstName: String, lastName: String, email: String, phone: String, password: String, confPassword: String) {
+
         dialog.showProgressBar()
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task->
                 if (task.isSuccessful){
-                    dialog.dismissProgressBar()
-                    Toast.makeText(requireContext(), "created account successfully", Toast.LENGTH_LONG).show()
+                    val fUser: FirebaseUser = task.result!!.user!!
+
+                    val user = User(
+                        fUser.uid,
+                        firstName,
+                        lastName,
+                        email,
+                        phone,
+                    )
+                    registerUserDetails(user)
                 }
                 else {
                     dialog.dismissProgressBar()
                     Toast.makeText(requireContext(), task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
                 }
+            }
+
+    }
+
+    private fun registerUserDetails(user: User) {
+
+        //val db = FirebaseFirestore.getInstance()
+        val db = Firebase.firestore
+
+        db.collection("Users")
+            .document(user.id)
+            .set(user, SetOptions.merge())
+            .addOnSuccessListener {
+                dialog.dismissProgressBar()
+                Toast.makeText(requireContext(), "created account successfully", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                dialog.dismissResetProgressBarError()
             }
 
     }
