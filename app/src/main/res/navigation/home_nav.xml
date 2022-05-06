@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/home_nav">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.starsolns.e_shop.ui.fragments.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.starsolns.e_shop.ui.fragments.home.ChatFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.starsolns.e_shop.ui.fragments.home.CartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.starsolns.e_shop.ui.fragments.home.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

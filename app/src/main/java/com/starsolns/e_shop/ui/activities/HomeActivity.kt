@@ -9,7 +9,9 @@ import android.view.WindowManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
@@ -21,6 +23,7 @@ import com.starsolns.e_shop.util.Constants
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
 
     private lateinit var binding: ActivityHomeBinding
@@ -34,6 +37,13 @@ class HomeActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController)
 
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment, R.id.chatFragment, R.id.cartFragment, R.id.profileFragment
+            )
+        )
 
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.bottomNavView.setupWithNavController(navController)
     }
 }

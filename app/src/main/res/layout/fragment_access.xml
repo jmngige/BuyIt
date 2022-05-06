@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/splash_background"
-    tools:context=".ui.fragments.AccessFragment">
+    tools:context=".ui.fragments.auth.AccessFragment">
 
     <View
         android:id="@+id/access_header"

@@ -12,7 +12,6 @@ import com.starsolns.e_shop.R
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
-    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +20,5 @@ class MainActivity : AppCompatActivity() {
         val navHost = supportFragmentManager.findFragmentById(R.id.hostFragment) as NavHostFragment
         navController = navHost.findNavController()
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-
-            )
-        )
     }
 }
