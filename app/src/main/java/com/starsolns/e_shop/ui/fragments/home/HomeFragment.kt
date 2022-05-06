@@ -1,4 +1,4 @@
-package com.starsolns.e_shop.ui.fragments
+package com.starsolns.e_shop.ui.fragments.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.starsolns.e_shop.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
