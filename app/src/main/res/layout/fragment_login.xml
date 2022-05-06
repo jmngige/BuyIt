@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.LoginFragment">
+    tools:context=".ui.fragments.auth.LoginFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -79,6 +79,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:foreground="?attr/selectableItemBackground"
             app:layout_constraintEnd_toEndOf="@id/loginRightGuideline"
             app:layout_constraintStart_toStartOf="@id/loginLeftGuideline"

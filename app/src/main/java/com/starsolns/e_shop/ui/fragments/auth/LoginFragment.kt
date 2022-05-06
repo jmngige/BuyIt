@@ -1,4 +1,4 @@
-package com.starsolns.e_shop.ui.fragments
+package com.starsolns.e_shop.ui.fragments.auth
 
 import android.os.Bundle
 import android.util.Patterns

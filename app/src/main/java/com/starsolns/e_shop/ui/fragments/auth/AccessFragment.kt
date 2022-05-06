@@ -1,6 +1,5 @@
-package com.starsolns.e_shop.ui.fragments
+package com.starsolns.e_shop.ui.fragments.auth
 
-import android.os.Build
 import android.os.Bundle
 import android.view.*
 import androidx.core.view.ViewCompat
@@ -8,7 +7,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
-import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentAccessBinding
 import com.starsolns.e_shop.ui.adapter.PagerAdapter
 

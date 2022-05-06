@@ -1,22 +1,18 @@
-package com.starsolns.e_shop.ui.fragments
+package com.starsolns.e_shop.ui.fragments.auth
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentRegisterBinding
 import com.starsolns.e_shop.model.Users
 import com.starsolns.e_shop.util.Constants

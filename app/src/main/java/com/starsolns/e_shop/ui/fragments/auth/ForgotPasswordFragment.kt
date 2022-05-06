@@ -1,4 +1,4 @@
-package com.starsolns.e_shop.ui.fragments
+package com.starsolns.e_shop.ui.fragments.auth
 
 import android.os.Bundle
 import android.os.Handler
@@ -12,7 +12,6 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
