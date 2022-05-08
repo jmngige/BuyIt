@@ -34,14 +34,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".10" />
+        app:layout_constraintGuide_percent=".15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/profile_image_bottom_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".24" />
+        app:layout_constraintGuide_percent=".27" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/profile_image_left_guideline"
@@ -76,233 +76,243 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="John Doe"
+        android:text="@string/profile_name"
         android:textColor="@color/darker"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@id/profile_image"
         app:layout_constraintStart_toStartOf="@id/profile_image"
         app:layout_constraintTop_toBottomOf="@id/profile_image" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/profile_details"
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/profile_right_guideline"
-        app:layout_constraintStart_toStartOf="@+id/profile_left_guideline"
-        app:layout_constraintTop_toBottomOf="@id/profile_name"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintStart_toStartOf="@id/profile_left_guideline"
+        app:layout_constraintEnd_toEndOf="@id/profile_right_guideline"
+        app:layout_constraintTop_toBottomOf="@id/profile_name">
 
-        <RelativeLayout
-            android:id="@+id/profile_layout"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profile_details"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="6dp"
-            app:layout_constraintEnd_toEndOf="@+id/profile_details"
-            app:layout_constraintStart_toStartOf="@+id/profile_details"
-            app:layout_constraintTop_toTopOf="@+id/profile_details">
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/profile_right_guideline"
+            app:layout_constraintStart_toStartOf="@+id/profile_left_guideline">
 
-            <ImageView
-                android:id="@+id/profile_profile_icon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/ic_profile" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/profile_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/profile_profile_icon"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Edit Profile"
-                android:textColor="@color/darker"
-                android:textSize="16sp" />
+                android:padding="7dp"
+                app:layout_constraintEnd_toEndOf="@+id/profile_details"
+                app:layout_constraintStart_toStartOf="@+id/profile_details"
+                app:layout_constraintTop_toTopOf="@+id/profile_details">
 
-            <ImageView
-                android:id="@+id/profile_profile_arrow"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_arrow_back" />
+                <ImageView
+                    android:id="@+id/profile_profile_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/ic_profile" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/profile_profile_icon"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/edit_profile_text"
+                    android:textColor="@color/darker"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/profile_profile_arrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_arrow_back" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/address_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:padding="6dp"
-            app:layout_constraintEnd_toEndOf="@+id/profile_details"
-            app:layout_constraintStart_toStartOf="@+id/profile_details"
-            app:layout_constraintTop_toBottomOf="@id/profile_layout">
-
-            <ImageView
-                android:id="@+id/profile_address_icon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/ic_address" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/address_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/profile_address_icon"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Shipping Address"
-                android:textColor="@color/darker"
-                android:textSize="16sp" />
+                android:layout_marginTop="14dp"
+                android:padding="7dp"
+                app:layout_constraintEnd_toEndOf="@+id/profile_details"
+                app:layout_constraintStart_toStartOf="@+id/profile_details"
+                app:layout_constraintTop_toBottomOf="@id/profile_layout">
 
-            <ImageView
-                android:id="@+id/profile_address_arrow"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_arrow_back" />
+                <ImageView
+                    android:id="@+id/profile_address_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/ic_address" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/profile_address_icon"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/shipping_address_text"
+                    android:textColor="@color/darker"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/profile_address_arrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_arrow_back" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/wishlist_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:padding="6dp"
-            app:layout_constraintEnd_toEndOf="@+id/profile_details"
-            app:layout_constraintStart_toStartOf="@+id/profile_details"
-            app:layout_constraintTop_toBottomOf="@id/address_layout">
-
-            <ImageView
-                android:id="@+id/profile_wishlist_icon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/ic_wishlist" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/wishlist_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/profile_wishlist_icon"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Wishlist"
-                android:textColor="@color/darker"
-                android:textSize="16sp" />
+                android:layout_marginTop="14dp"
+                android:padding="7dp"
+                app:layout_constraintEnd_toEndOf="@+id/profile_details"
+                app:layout_constraintStart_toStartOf="@+id/profile_details"
+                app:layout_constraintTop_toBottomOf="@id/address_layout">
 
-            <ImageView
-                android:id="@+id/profile_wishlist_arrow"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_arrow_back" />
+                <ImageView
+                    android:id="@+id/profile_wishlist_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/ic_wishlist" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/profile_wishlist_icon"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/wishlist_text"
+                    android:textColor="@color/darker"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/profile_wishlist_arrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_arrow_back" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/order_history_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:padding="6dp"
-            app:layout_constraintEnd_toEndOf="@+id/profile_details"
-            app:layout_constraintStart_toStartOf="@+id/profile_details"
-            app:layout_constraintTop_toBottomOf="@id/wishlist_layout">
-
-            <ImageView
-                android:id="@+id/profile_order_history_icon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/ic_history" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/order_history_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/profile_order_history_icon"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Order history"
-                android:textColor="@color/darker"
-                android:textSize="16sp" />
+                android:layout_marginTop="14dp"
+                android:padding="7dp"
+                app:layout_constraintEnd_toEndOf="@+id/profile_details"
+                app:layout_constraintStart_toStartOf="@+id/profile_details"
+                app:layout_constraintTop_toBottomOf="@id/wishlist_layout">
 
-            <ImageView
-                android:id="@+id/profile_order_history_arrow"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_arrow_back" />
+                <ImageView
+                    android:id="@+id/profile_order_history_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/ic_history" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/profile_order_history_icon"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/order_history_text"
+                    android:textColor="@color/darker"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/profile_order_history_arrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_arrow_back" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/order_payments_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:padding="6dp"
-            app:layout_constraintEnd_toEndOf="@+id/profile_details"
-            app:layout_constraintStart_toStartOf="@+id/profile_details"
-            app:layout_constraintTop_toBottomOf="@id/order_history_layout">
-
-            <ImageView
-                android:id="@+id/profile_payments_icon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/ic_payments" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/order_payments_layout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/profile_payments_icon"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Payments"
-                android:textColor="@color/darker"
-                android:textSize="16sp" />
+                android:layout_marginTop="14dp"
+                android:padding="7dp"
+                app:layout_constraintEnd_toEndOf="@+id/profile_details"
+                app:layout_constraintStart_toStartOf="@+id/profile_details"
+                app:layout_constraintTop_toBottomOf="@id/order_history_layout">
 
-            <ImageView
-                android:id="@+id/profile_payments_arrow"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_arrow_back" />
+                <ImageView
+                    android:id="@+id/profile_payments_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/ic_payments" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@id/profile_payments_icon"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/payments_text"
+                    android:textColor="@color/darker"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/profile_payments_arrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_arrow_back" />
 
 
-        </RelativeLayout>
+            </RelativeLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/profile_left_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".03" />
+    </ScrollView>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/profile_right_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".97" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/profile_left_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".03" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/profile_right_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".97" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

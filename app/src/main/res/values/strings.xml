@@ -21,4 +21,10 @@
     <string name="reset_link_text">Didn\'t receive a reset link?</string>
     <string name="resend_link_text">Resend</string>
     <string name="profile_title_text">Profile</string>
+    <string name="profile_name">John Doe</string>
+    <string name="edit_profile_text">Edit Profile</string>
+    <string name="shipping_address_text">Shipping Address</string>
+    <string name="wishlist_text">Wishlist</string>
+    <string name="order_history_text">Order history</string>
+    <string name="payments_text">Payments</string>
 </resources>
