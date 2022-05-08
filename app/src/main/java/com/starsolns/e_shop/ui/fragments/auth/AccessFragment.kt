@@ -6,7 +6,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentAccessBinding
 import com.starsolns.e_shop.ui.adapter.PagerAdapter
 
@@ -14,6 +19,8 @@ class AccessFragment : Fragment() {
 
     private var _binding: FragmentAccessBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +51,7 @@ class AccessFragment : Fragment() {
             tab.text = titles[position]
         }.attach()
 
+        auth = Firebase.auth
 
         return binding.root
     }

@@ -3,22 +3,13 @@ package com.starsolns.e_shop.ui.activities
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.WindowInsets
-import android.view.WindowManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.ActivityHomeBinding
-import com.starsolns.e_shop.model.Users
-import com.starsolns.e_shop.util.Constants
 
 class HomeActivity : AppCompatActivity() {
 
@@ -35,15 +26,7 @@ class HomeActivity : AppCompatActivity() {
         val navHost = supportFragmentManager.findFragmentById(R.id.homeFragmentHost) as NavHostFragment
         navController = navHost.findNavController()
 
-        setupActionBarWithNavController(navController)
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.homeFragment, R.id.chatFragment, R.id.cartFragment, R.id.profileFragment
-            )
-        )
-
-        setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavView.setupWithNavController(navController)
     }
 }
