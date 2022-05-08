@@ -106,7 +106,7 @@
                 android:id="@+id/profile_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="7dp"
+                android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="@+id/profile_details"
                 app:layout_constraintStart_toStartOf="@+id/profile_details"
                 app:layout_constraintTop_toTopOf="@+id/profile_details">
@@ -147,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:padding="7dp"
+                android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="@+id/profile_details"
                 app:layout_constraintStart_toStartOf="@+id/profile_details"
                 app:layout_constraintTop_toBottomOf="@id/profile_layout">
@@ -188,7 +188,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:padding="7dp"
+                android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="@+id/profile_details"
                 app:layout_constraintStart_toStartOf="@+id/profile_details"
                 app:layout_constraintTop_toBottomOf="@id/address_layout">
@@ -229,7 +229,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:padding="7dp"
+                android:padding="5dp"
                 android:layout_marginBottom="20dp"
                 app:layout_constraintEnd_toEndOf="@+id/profile_details"
                 app:layout_constraintStart_toStartOf="@+id/profile_details"
@@ -271,7 +271,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:padding="7dp"
+                android:padding="5dp"
                 app:layout_constraintEnd_toEndOf="@+id/profile_details"
                 app:layout_constraintStart_toStartOf="@+id/profile_details"
                 app:layout_constraintTop_toBottomOf="@id/order_history_layout">

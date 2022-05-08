@@ -43,6 +43,9 @@
     <color name="profileTitleColor">@color/darker</color>
     <color name="profileIconWidthColor">#60005005</color>
     <color name="profileIconsColor">#90313C44</color>
+    <color name="editProfileTitleTextColor">#FFFFFF</color>
+
+
 
 
     <!-- Recipe Items card Background -->
