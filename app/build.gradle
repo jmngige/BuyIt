@@ -53,10 +53,10 @@ dependencies {
 
 
     //firebase dep
-    implementation "com.google.firebase:firebase-bom:29.3.1"
-    implementation 'com.google.firebase:firebase-analytics-ktx:20.1.2'
-    implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.1.1'
+    implementation "com.google.firebase:firebase-bom:30.0.0"
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.0.0'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.5'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.1.2'
     implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
     implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.10'
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.3'
@@ -67,6 +67,10 @@ dependencies {
 
     //spinkit
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+    //circular Imageview dep
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 
     //navigation dep
     def nav_version = "2.4.2"

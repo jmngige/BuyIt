@@ -39,6 +39,9 @@
     <color name="splash_background">#00C853</color>
     <color name="splash_background2">#c7ede6</color>
 
+    <!-- Profile colors -->
+    <color name="profileTitleColor">@color/darker</color>
+
     <!-- Recipe Items card Background -->
     <color name="recipeItemBackground">@color/white</color>
     <color name="recipeItemCardStrokeColor">#918D8D</color>

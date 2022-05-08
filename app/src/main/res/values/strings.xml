@@ -20,4 +20,5 @@
     <string name="forgot_password_message">Enter the email address associated with your account below</string>
     <string name="reset_link_text">Didn\'t receive a reset link?</string>
     <string name="resend_link_text">Resend</string>
+    <string name="profile_title_text">Profile</string>
 </resources>

@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/accessFragment"
-        android:name="com.starsolns.e_shop.ui.fragments.AccessFragment"
-        android:label="fragment_access"
-        tools:layout="@layout/fragment_access" >
+        android:name="com.starsolns.e_shop.ui.fragments.auth.AccessFragment"
+        android:label="Access"
+        tools:layout="@layout/fragment_access">
         <action
             android:id="@+id/action_accessFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment"
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.starsolns.e_shop.ui.fragments.ForgotPasswordFragment"
+        android:name="com.starsolns.e_shop.ui.fragments.auth.ForgotPasswordFragment"
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action

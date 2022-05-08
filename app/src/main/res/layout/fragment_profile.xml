@@ -1,10 +1,279 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.home.ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar_title"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_title_text"
+            android:textAlignment="center"
+            android:textColor="@color/darker"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar_title"
+            app:layout_constraintEnd_toEndOf="@id/toolbar_title"
+            app:layout_constraintStart_toStartOf="@id/toolbar_title"
+            app:layout_constraintTop_toTopOf="@id/toolbar_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_add_photo"
+        android:tint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_title" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="John Doe"
+        android:textColor="@color/darker"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/profile_image"
+        app:layout_constraintStart_toStartOf="@id/profile_image"
+        app:layout_constraintTop_toBottomOf="@id/profile_image" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profile_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/profile_right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/profile_left_guideline"
+        app:layout_constraintTop_toBottomOf="@id/profile_name"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RelativeLayout
+            android:id="@+id/profile_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/profile_details"
+            app:layout_constraintStart_toStartOf="@+id/profile_details"
+            app:layout_constraintTop_toTopOf="@+id/profile_details">
+
+            <ImageView
+                android:id="@+id/profile_profile_icon"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_profile" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/profile_profile_icon"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Edit Profile"
+                android:textColor="@color/darker"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/profile_profile_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/address_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/profile_details"
+            app:layout_constraintStart_toStartOf="@+id/profile_details"
+            app:layout_constraintTop_toBottomOf="@id/profile_layout">
+
+            <ImageView
+                android:id="@+id/profile_address_icon"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_address" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/profile_address_icon"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Shipping Address"
+                android:textColor="@color/darker"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/profile_address_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/wishlist_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/profile_details"
+            app:layout_constraintStart_toStartOf="@+id/profile_details"
+            app:layout_constraintTop_toBottomOf="@id/address_layout">
+
+            <ImageView
+                android:id="@+id/profile_wishlist_icon"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_wishlist" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/profile_wishlist_icon"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Wishlist"
+                android:textColor="@color/darker"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/profile_wishlist_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/order_history_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/profile_details"
+            app:layout_constraintStart_toStartOf="@+id/profile_details"
+            app:layout_constraintTop_toBottomOf="@id/wishlist_layout">
+
+            <ImageView
+                android:id="@+id/profile_order_history_icon"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_history" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/profile_order_history_icon"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Order history"
+                android:textColor="@color/darker"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/profile_order_history_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/order_payments_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/profile_details"
+            app:layout_constraintStart_toStartOf="@+id/profile_details"
+            app:layout_constraintTop_toBottomOf="@id/order_history_layout">
+
+            <ImageView
+                android:id="@+id/profile_payments_icon"
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_payments" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/profile_payments_icon"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Payments"
+                android:textColor="@color/darker"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/profile_payments_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back" />
+
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profile_left_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/profile_right_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".97" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
