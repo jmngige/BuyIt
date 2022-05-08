@@ -6,22 +6,22 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.starsolns.e_shop.ui.fragments.home.HomeFragment"
+        android:name="com.starsolns.e_shop.ui.fragments.home.home.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.starsolns.e_shop.ui.fragments.home.ChatFragment"
+        android:name="com.starsolns.e_shop.ui.fragments.home.chat.ChatFragment"
         android:label="Chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.starsolns.e_shop.ui.fragments.home.CartFragment"
+        android:name="com.starsolns.e_shop.ui.fragments.home.cart.CartFragment"
         android:label="Cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.starsolns.e_shop.ui.fragments.home.ProfileFragment"
+        android:name="com.starsolns.e_shop.ui.fragments.home.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

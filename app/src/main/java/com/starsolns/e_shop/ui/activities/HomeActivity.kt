@@ -3,6 +3,7 @@ package com.starsolns.e_shop.ui.activities
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -28,5 +29,17 @@ class HomeActivity : AppCompatActivity() {
 
 
         binding.bottomNavView.setupWithNavController(navController)
+    }
+
+    fun hideBottomNavBar(){
+        binding.bottomNavView.clearAnimation()
+        binding.bottomNavView.animate().translationY(binding.bottomNavView.height.toFloat()).duration = 300
+        binding.bottomNavView.visibility = View.GONE
+    }
+
+    fun showBottomNavBar(){
+        binding.bottomNavView.clearAnimation()
+        binding.bottomNavView.animate().translationY(0f).duration = 300
+        binding.bottomNavView.visibility = View.VISIBLE
     }
 }

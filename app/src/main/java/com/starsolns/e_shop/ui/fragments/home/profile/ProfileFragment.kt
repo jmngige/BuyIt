@@ -1,15 +1,14 @@
-package com.starsolns.e_shop.ui.fragments.home
+package com.starsolns.e_shop.ui.fragments.home.profile
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.starsolns.e_shop.databinding.FragmentHomeBinding
+import com.starsolns.e_shop.R
+import com.starsolns.e_shop.databinding.FragmentProfileBinding
 
-class HomeFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentProfileBinding? =null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -17,8 +16,9 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
 
+        setHasOptionsMenu(true)
 
         return binding.root
     }
@@ -27,4 +27,5 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
