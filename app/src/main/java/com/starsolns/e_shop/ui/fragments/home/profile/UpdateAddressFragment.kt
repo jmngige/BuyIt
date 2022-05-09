@@ -5,13 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentProfileBinding
-import com.starsolns.e_shop.databinding.FragmentShippingAddressBinding
+import com.starsolns.e_shop.databinding.FragmentUpdateAddressBinding
 
-class ShippingAddressFragment : Fragment() {
+class UpdateAddressFragment : BottomSheetDialogFragment() {
 
-    private var _binding: FragmentShippingAddressBinding? =null
+    private var _binding: FragmentUpdateAddressBinding? =null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,11 +20,8 @@ class ShippingAddressFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentShippingAddressBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentUpdateAddressBinding.inflate(layoutInflater, container, false)
 
-        binding.addShippingAddressButton.setOnClickListener {
-
-        }
 
 
         return binding.root

@@ -30,4 +30,9 @@
     <string name="date_of_birth_hint">Date of Birth</string>
     <string name="female_text">Female</string>
     <string name="male_text">Male</string>
+    <string name="phone_hint">Phone</string>
+    <string name="region_hint">Region</string>
+    <string name="town_hint">Town</string>
+    <string name="address_hint">Address</string>
+    <string name="additional_information_hint">Additional Information</string>
 </resources>

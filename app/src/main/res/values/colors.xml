@@ -44,6 +44,8 @@
     <color name="profileIconWidthColor">#60005005</color>
     <color name="profileIconsColor">#90313C44</color>
     <color name="editProfileTitleTextColor">#FFFFFF</color>
+    <color name="shippingAddressImageBackGround">#90018538</color>
+    <color name="addShippingAddressTextColor">#018538</color>
 
 
 
