@@ -27,4 +27,5 @@
     <string name="wishlist_text">Wishlist</string>
     <string name="order_history_text">Order history</string>
     <string name="payments_text">Payments</string>
+    <string name="date_of_birth_hint">Date of Birth</string>
 </resources>
