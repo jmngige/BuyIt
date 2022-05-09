@@ -27,6 +27,13 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        binding.addressLayout.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_shippingAddressFragment)
+            if(requireActivity() is HomeActivity){
+                (activity as HomeActivity).hideBottomNavBar()
+            }
+        }
+
         return binding.root
     }
 

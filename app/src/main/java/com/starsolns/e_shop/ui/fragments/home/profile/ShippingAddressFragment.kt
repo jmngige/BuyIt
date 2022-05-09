@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentProfileBinding
 import com.starsolns.e_shop.databinding.FragmentShippingAddressBinding
@@ -22,7 +23,7 @@ class ShippingAddressFragment : Fragment() {
         _binding = FragmentShippingAddressBinding.inflate(layoutInflater, container, false)
 
         binding.addShippingAddressButton.setOnClickListener {
-
+            findNavController().navigate(R.id.action_shippingAddressFragment_to_updateAddressFragment)
         }
 
 
