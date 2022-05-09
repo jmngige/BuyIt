@@ -33,6 +33,10 @@ class HomeActivity : AppCompatActivity() {
         binding.bottomNavView.setupWithNavController(navController)
     }
 
+    override fun onNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onNavigateUp()
+    }
+
     fun hideBottomNavBar(){
         binding.bottomNavView.clearAnimation()
         binding.bottomNavView.animate().translationY(binding.bottomNavView.height.toFloat()).duration = 300

@@ -1,10 +1,8 @@
 package com.starsolns.e_shop.ui.fragments.home.profile
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentEditProfileBinding
@@ -28,4 +26,11 @@ class EditProfileFragment : Fragment() {
 
         return binding.root
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.profile_toolbar_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+
 }

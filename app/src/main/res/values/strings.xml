@@ -28,4 +28,6 @@
     <string name="order_history_text">Order history</string>
     <string name="payments_text">Payments</string>
     <string name="date_of_birth_hint">Date of Birth</string>
+    <string name="female_text">Female</string>
+    <string name="male_text">Male</string>
 </resources>
