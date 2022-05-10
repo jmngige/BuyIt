@@ -65,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintGuide_percent=".30" />
+                    app:layout_constraintGuide_percent=".25" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/edit_profile_image_left_guideline"
@@ -86,12 +86,23 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:padding="2dp"
-                    android:src="@drawable/ic_add_photo"
+                    android:src="@drawable/ic_profile_placeholder"
                     app:layout_constraintBottom_toBottomOf="@id/edit_profile_bottom_guideline"
-                    app:layout_constraintEnd_toEndOf="@id/edit_profile_right_guideline"
-                    app:layout_constraintStart_toStartOf="@id/edit_profile_left_guideline"
+                    app:layout_constraintEnd_toEndOf="@id/edit_profile_image_right_guideline"
+                    app:layout_constraintStart_toStartOf="@id/edit_profile_image_left_guideline"
                     app:layout_constraintTop_toTopOf="@id/edit_profile_top_guideline" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/change_profile_image"
+                        android:text="@string/change_profile_image_text"
+                        app:layout_constraintTop_toBottomOf="@id/edit_profile_image"
+                        app:layout_constraintStart_toStartOf="@id/edit_profile_image"
+                        app:layout_constraintEnd_toEndOf="@id/edit_profile_image"
+                        android:layout_marginTop="12dp"
+                        android:textColor="@color/changeProfileImageTextColor"
+                        android:fontFamily="@font/roboto_bold"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/txtInput_editEmail"
@@ -102,7 +113,7 @@
                     android:hint="@string/hint_email"
                     app:layout_constraintEnd_toEndOf="@id/edit_profile_right_guideline"
                     app:layout_constraintStart_toStartOf="@id/edit_profile_left_guideline"
-                    app:layout_constraintTop_toBottomOf="@id/edit_profile_image">
+                    app:layout_constraintTop_toBottomOf="@id/change_profile_image">
 
                     <EditText
                         android:id="@+id/edit_email_id"

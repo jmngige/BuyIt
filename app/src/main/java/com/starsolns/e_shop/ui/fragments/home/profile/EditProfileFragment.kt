@@ -40,6 +40,9 @@ class EditProfileFragment : Fragment() {
         dialog = ProgressButton(requireContext(), buttonView)
         dialog.showSubmit()
 
+        binding.changeProfileImage.setOnClickListener {
+            findNavController().navigate(R.id.action_editProfileFragment_to_changeImageFragment)
+        }
 
         setHasOptionsMenu(true)
 

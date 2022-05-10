@@ -46,6 +46,7 @@
     <color name="editProfileTitleTextColor">#FFFFFF</color>
     <color name="shippingAddressImageBackGround">#90018538</color>
     <color name="addShippingAddressTextColor">#018538</color>
+    <color name="changeProfileImageTextColor">#018538</color>
 
 
 

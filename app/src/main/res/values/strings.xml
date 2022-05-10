@@ -36,4 +36,5 @@
     <string name="address_hint">Address</string>
     <string name="additional_information_hint">Additional Information</string>
     <string name="add_shipping_address_text">Add Shipping Address</string>
+    <string name="change_profile_image_text">Change profile Image</string>
 </resources>
