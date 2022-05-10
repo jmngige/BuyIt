@@ -37,4 +37,9 @@
     <string name="additional_information_hint">Additional Information</string>
     <string name="add_shipping_address_text">Add Shipping Address</string>
     <string name="change_profile_image_text">Change profile Image</string>
+    <string name="choose_from_gallery_text">Choose from Gallery</string>
+    <string name="choose_from_camera_text">Choose from camera</string>
+    <string name="remove_profile_photo_text">Remove Profile Photo</string>
+    <string name="permissions_denied">The application requires this permission enabled to continue</string>
+    <string name="permissions_denied_title">!Warning</string>
 </resources>

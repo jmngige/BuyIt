@@ -7,6 +7,7 @@ plugins {
     apply plugin: 'com.google.gms.google-services'
     apply plugin: "androidx.navigation.safeargs.kotlin"
     apply plugin: "kotlin-kapt"
+    apply plugin: "dagger.hilt.android.plugin"
 
 android {
     compileSdk 32
@@ -44,7 +45,7 @@ dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
@@ -65,11 +66,23 @@ dependencies {
     //admob dep
     //implementation 'com.google.android.gms:play-services-ads:20.6.0'
 
+    //dagger hilt dep
+    def dHilt_version = "2.38.1"
+    implementation "com.google.dagger:hilt-android:$dHilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$dHilt_version"
+
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
+
     //spinkit
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 
     //circular Imageview dep
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //Permissions dep
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.vmadalin:easypermissions-ktx:1.0.0'
 
 
     //navigation dep
@@ -84,6 +97,13 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     testImplementation "androidx.room:room-testing:$room_version"
+
+    //datastore dep
+    implementation "androidx.datastore:datastore:1.0.0"
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    //Gson dep
+    implementation 'com.google.code.gson:gson:2.9.0'
 
     //lifecycle dep
     def lifecycle_version = "2.5.0-beta01"
@@ -100,9 +120,6 @@ dependencies {
     //datastore dep
     implementation "androidx.datastore:datastore:1.0.0"
     implementation "androidx.datastore:datastore-preferences:1.0.0"
-
-    //Gson dep
-    implementation 'com.google.code.gson:gson:2.9.0'
 
     //coil dep
     implementation "io.coil-kt:coil:2.0.0-rc02"

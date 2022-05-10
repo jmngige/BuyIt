@@ -21,12 +21,12 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Change Profile Photo"
+        android:text="@string/choose_from_gallery_text"
         android:fontFamily="@font/roboto_bold"
         app:layout_constraintTop_toBottomOf="@id/view_layout_0"
         android:layout_marginTop="12dp"
         android:padding="12dp"
-        android:id="@+id/change_profile_text"/>
+        android:id="@+id/choose_from_gallery_text"/>
 
     <View
         android:layout_width="0dp"
@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/view_layout_1"
         android:background="@color/grey"
-        app:layout_constraintTop_toBottomOf="@id/change_profile_text"
+        app:layout_constraintTop_toBottomOf="@id/choose_from_gallery_text"
         android:layout_marginTop="5dp"/>
 
     <TextView
@@ -43,12 +43,12 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="New Profile Photo"
+        android:text="@string/choose_from_camera_text"
         android:fontFamily="@font/roboto_bold"
         app:layout_constraintTop_toBottomOf="@id/view_layout_1"
         android:layout_marginTop="12dp"
         android:padding="12dp"
-        android:id="@+id/new_profile_text"/>
+        android:id="@+id/choose_from_camera_text"/>
 
     <View
         android:layout_width="0dp"
@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/view_layout_2"
         android:background="@color/grey"
-        app:layout_constraintTop_toBottomOf="@id/new_profile_text"
+        app:layout_constraintTop_toBottomOf="@id/choose_from_camera_text"
         android:layout_marginTop="5dp"/>
 
     <TextView
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Remove Profile Photo"
+        android:text="@string/remove_profile_photo_text"
         android:textColor="@android:color/holo_red_light"
         android:fontFamily="@font/roboto_bold"
         app:layout_constraintTop_toBottomOf="@id/view_layout_2"
