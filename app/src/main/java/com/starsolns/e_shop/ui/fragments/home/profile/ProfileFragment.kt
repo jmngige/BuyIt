@@ -34,6 +34,20 @@ class ProfileFragment : Fragment() {
             }
         }
 
+        binding.wishlistLayout.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_wishlistFragment)
+            if(requireActivity() is HomeActivity){
+                (activity as HomeActivity).hideBottomNavBar()
+            }
+        }
+
+        binding.orderHistoryLayout.setOnClickListener {
+            findNavController().navigate(R.id.action_profileFragment_to_orderHistoryFragment)
+            if(requireActivity() is HomeActivity){
+                (activity as HomeActivity).hideBottomNavBar()
+            }
+        }
+
         return binding.root
     }
 

@@ -31,19 +31,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:background="@drawable/shipping_address_text_bg"
-        android:drawableLeft="@drawable/ic_add"
         android:paddingStart="8dp"
         android:paddingTop="5dp"
         android:paddingEnd="8dp"
         android:paddingBottom="5dp"
-        android:text="Add Shipping Address"
+        android:text="@string/add_shipping_address_text"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:drawableLeftCompat="@drawable/ic_add" />
 
     <com.todkars.shimmer.ShimmerRecyclerView
         android:layout_width="0dp"
