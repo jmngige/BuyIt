@@ -1,24 +1,36 @@
 package com.starsolns.e_shop.ui.fragments.home.profile
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.Manifest
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Base64
+import android.provider.MediaStore
+import android.provider.Settings
 import android.view.*
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import coil.Coil
-import coil.load
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import com.karumi.dexter.listener.single.PermissionListener
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentEditProfileBinding
-import com.starsolns.e_shop.databinding.FragmentProfileBinding
+import com.starsolns.e_shop.databinding.ImageProfileBottomSheetBinding
 import com.starsolns.e_shop.ui.activities.HomeActivity
+import com.starsolns.e_shop.util.Constants
 import com.starsolns.e_shop.util.ProgressButton
 import com.starsolns.e_shop.viewmodel.SharedViewModel
-import kotlinx.coroutines.flow.collect
+
 
 class EditProfileFragment : Fragment() {
 
@@ -58,29 +70,105 @@ class EditProfileFragment : Fragment() {
         dialog.showSubmit()
 
         binding.changeProfileImage.setOnClickListener {
-            findNavController().navigate(R.id.action_editProfileFragment_to_changeImageFragment)
+            showBottomSheetOptions()
         }
-
-        if(mImageString != ""){
-            val imageBitmap = stringToBitmap(mImageString)
-            binding.editProfileImage.load(imageBitmap)
-        }
-
 
         setHasOptionsMenu(true)
 
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.profile_toolbar_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
+    private fun showBottomSheetOptions() {
+        val bottomSheetDialog = BottomSheetDialog(requireActivity(), R.style.Theme_BottomSheetCustomStyle)
+        val customBinding: ImageProfileBottomSheetBinding = ImageProfileBottomSheetBinding.inflate(layoutInflater)
+        bottomSheetDialog.setContentView(customBinding.root)
+
+        customBinding.apply {
+            chooseFromCameraText.setOnClickListener {
+                loadImageFromCamera()
+                bottomSheetDialog.dismiss()
+            }
+            chooseFromGalleryText.setOnClickListener {
+                bottomSheetDialog.dismissWithAnimation
+            }
+            removeProfileText.setOnClickListener {
+                bottomSheetDialog.dismiss()
+            }
+        }
+        bottomSheetDialog.show()
+
     }
 
-    private fun stringToBitmap(image: String): Bitmap{
-        val imageBytes = Base64.decode(image, 0)
-        return  BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+    private fun loadImageFromCamera() {
+        Dexter.withContext(requireContext()).withPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ).withListener(object : MultiplePermissionsListener {
+            override fun onPermissionsChecked(permReport: MultiplePermissionsReport?) {
+                permReport?.let {
+                    if(permReport.areAllPermissionsGranted()) {
+                        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                        startActivityForResult(cameraIntent, Constants.CAMERA_OPTION_CODE)
+                    }
+                }
+            }
+
+            override fun onPermissionRationaleShouldBeShown(
+                permsList: MutableList<PermissionRequest>?,
+                permToken: PermissionToken?
+            ) {
+                showCustomPermissionDialog()
+            }
+
+        }).onSameThread().check()
     }
 
+    private fun requestGalleryAccessPermissions(){
+        Dexter.withContext(requireContext()).withPermission(
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        ).withListener(object : PermissionListener {
+            override fun onPermissionGranted(perms: PermissionGrantedResponse?) {
+                val galleryIntent = Intent(Intent.ACTION_PICK,  MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                startActivityForResult(galleryIntent, Constants.GALLERY_OPTION_CODE)
+            }
 
+            override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
+                Toast.makeText(requireContext(), resources.getString(R.string.permissions_denied), Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onPermissionRationaleShouldBeShown(
+                permsRequest: PermissionRequest?,
+                permsToken: PermissionToken?
+            ) {
+                showCustomPermissionDialog()
+            }
+
+        }).onSameThread().check()
+    }
+
+    private fun showCustomPermissionDialog() {
+        AlertDialog.Builder(requireActivity())
+            .setTitle(resources.getString(R.string.permissions_denied_title))
+            .setMessage(resources.getString(R.string.permissions_denied))
+            .setPositiveButton("Settings"){_,_->
+                try{
+                    val settingsIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                    val uri = Uri.fromParts("package", requireContext().packageName, null)
+                    settingsIntent.data = uri
+                    startActivity(settingsIntent)
+
+                }catch (e: ActivityNotFoundException){
+                    Toast.makeText(requireContext(), "Please try again", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancel"){dialog,_->
+                dialog.dismiss()
+            }.show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

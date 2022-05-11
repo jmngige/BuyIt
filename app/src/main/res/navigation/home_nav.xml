@@ -25,10 +25,6 @@
         android:label="Profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_profileFragment_to_editProfileFragment"
-            app:destination="@id/editProfileFragment"
-            app:popUpTo="@id/editProfileFragment" />
-        <action
             android:id="@+id/action_profileFragment_to_shippingAddressFragment"
             app:destination="@id/shippingAddressFragment"
             app:popUpTo="@id/shippingAddressFragment"
@@ -43,21 +39,10 @@
             app:destination="@id/orderHistoryFragment"
             app:popUpTo="@id/orderHistoryFragment"
             app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/editProfileFragment"
-        android:name="com.starsolns.e_shop.ui.fragments.home.profile.EditProfileFragment"
-        android:label="Edit Profile"
-        tools:layout="@layout/fragment_edit_profile">
         <action
-            android:id="@+id/action_editProfileFragment_to_profileFragment"
-            app:destination="@id/profileFragment"
-            app:popUpTo="@id/profileFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_editProfileFragment_to_changeImageFragment"
-            app:destination="@id/changeImageFragment"
-            app:popUpTo="@id/changeImageFragment"
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment"
+            app:popUpTo="@id/editProfileFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -108,14 +93,15 @@
             app:popUpTo="@id/profileFragment"
             app:popUpToInclusive="true" />
     </fragment>
-    <dialog
-        android:id="@+id/changeImageFragment"
-        android:name="com.starsolns.e_shop.ui.fragments.home.profile.ChangeImageFragment"
-        android:label="fragment_change_image"
-        tools:layout="@layout/fragment_change_image" >
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.starsolns.e_shop.ui.fragments.home.profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
         <action
-            android:id="@+id/action_changeImageFragment_to_editProfileFragment"
-            app:destination="@id/editProfileFragment"
-            app:popUpTo="@id/editProfileFragment" />
-    </dialog>
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
