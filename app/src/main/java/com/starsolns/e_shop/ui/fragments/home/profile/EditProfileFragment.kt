@@ -47,7 +47,6 @@ class EditProfileFragment : Fragment() {
 
     private lateinit var dialog: ProgressButton
     private lateinit var buttonView: View
-    private var mImageString: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,9 +59,7 @@ class EditProfileFragment : Fragment() {
 
 
         sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
-        sharedViewModel.readImageString.observe(viewLifecycleOwner){ imageStr->
-                mImageString = imageStr
-        }
+
 
         toolbar = binding.editProfileToolBar
         toolbar.setNavigationOnClickListener {
