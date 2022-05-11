@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -42,6 +43,8 @@ import com.starsolns.e_shop.util.Constants.Companion.CAMERA_OPTION_CODE
 import com.starsolns.e_shop.util.Constants.Companion.GALLERY_OPTION_CODE
 import com.starsolns.e_shop.util.ProgressButton
 import com.starsolns.e_shop.viewmodel.SharedViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class EditProfileFragment : Fragment() {
@@ -89,6 +92,7 @@ class EditProfileFragment : Fragment() {
         loadUserDetails()
 
 
+
         setHasOptionsMenu(true)
 
         return binding.root
@@ -97,17 +101,25 @@ class EditProfileFragment : Fragment() {
     private fun loadUserDetails() {
         val db = Firebase.firestore
 
-        db.collection(Constants.USERS)
-            .document(firebaseUser)
-            .get()
-            .addOnSuccessListener {result->
-                val user = result.toObject<Users>()
-                binding.editEmailId.setText(user!!.email)
-                binding.editFirstName.setText(user.firstName)
-                binding.editLastName.setText(user.lastName)
-                binding.editPhone.setText(user.phone)
-                binding.editProfileImage.load(user?.profilePicture)
-            }
+        lifecycleScope.launch(Dispatchers.IO) {
+            db.collection(Constants.USERS)
+                .document(firebaseUser)
+                .get()
+                .addOnSuccessListener {result->
+                    val user = result.toObject<Users>()
+                    binding.editEmailId.setText(user!!.email)
+                    binding.editFirstName.setText(user.firstName)
+                    binding.editLastName.setText(user.lastName)
+                    binding.editPhone.setText(user.phone)
+                    binding.editProfileImage.load(user?.profilePicture)
+
+                    binding.saveProfileUpdate.loginRegisterAccessButton.setOnClickListener {
+
+                    }
+
+                }
+        }
+
     }
 
     private fun showBottomSheetOptions() {
