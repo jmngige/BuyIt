@@ -18,6 +18,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -29,6 +35,7 @@ import com.karumi.dexter.listener.single.PermissionListener
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentEditProfileBinding
 import com.starsolns.e_shop.databinding.ImageProfileBottomSheetBinding
+import com.starsolns.e_shop.model.Users
 import com.starsolns.e_shop.ui.activities.HomeActivity
 import com.starsolns.e_shop.util.Constants
 import com.starsolns.e_shop.util.Constants.Companion.CAMERA_OPTION_CODE
@@ -48,6 +55,9 @@ class EditProfileFragment : Fragment() {
     private lateinit var dialog: ProgressButton
     private lateinit var buttonView: View
 
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firebaseUser: String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,9 +66,8 @@ class EditProfileFragment : Fragment() {
         _binding = FragmentEditProfileBinding.inflate(layoutInflater, container, false)
         (context as HomeActivity).setUpSupportCustomActionBar(binding.editProfileToolBar)
 
-
-
-        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
+        auth = Firebase.auth
+        firebaseUser = auth.currentUser!!.uid
 
 
         toolbar = binding.editProfileToolBar
@@ -66,18 +75,39 @@ class EditProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
         }
 
-        buttonView = binding.saveProfileUpdate.loginRegisterAccessButton
 
+        buttonView = binding.saveProfileUpdate.loginRegisterAccessButton
         dialog = ProgressButton(requireContext(), buttonView)
         dialog.showSubmit()
+
 
         binding.changeProfileImage.setOnClickListener {
             showBottomSheetOptions()
         }
 
+
+        loadUserDetails()
+
+
         setHasOptionsMenu(true)
 
         return binding.root
+    }
+
+    private fun loadUserDetails() {
+        val db = Firebase.firestore
+
+        db.collection(Constants.USERS)
+            .document(firebaseUser)
+            .get()
+            .addOnSuccessListener {result->
+                val user = result.toObject<Users>()
+                binding.editEmailId.setText(user!!.email)
+                binding.editFirstName.setText(user.firstName)
+                binding.editLastName.setText(user.lastName)
+                binding.editPhone.setText(user.phone)
+                binding.editProfileImage.load(user?.profilePicture)
+            }
     }
 
     private fun showBottomSheetOptions() {
