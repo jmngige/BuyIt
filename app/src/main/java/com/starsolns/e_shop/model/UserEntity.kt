@@ -11,6 +11,6 @@ data class UserEntity(
     val phone: String,
     val dob: String?,
     val gender: String?,
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    @PrimaryKey
+    val id: String,
 )

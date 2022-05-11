@@ -1,19 +1,20 @@
 package com.starsolns.e_shop.data.room
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.starsolns.e_shop.model.UserEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ShopDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(userEntity: UserEntity)
 
-    @Query("SELECT * FROM user_profile")
-    fun userProfile(): Flow<List<UserEntity>>
+    @Update
+    suspend fun updateProfile(userEntity: UserEntity)
+
+    @Query("SELECT * FROM user_profile WHERE id LIKE :userId")
+    fun userProfile(userId: String): Flow<List<UserEntity>>
 
 }

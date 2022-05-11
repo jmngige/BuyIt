@@ -20,7 +20,6 @@ class SharedViewModel @Inject constructor(
     application: Application
 ): AndroidViewModel(application) {
 
-    val userProfile: LiveData<List<UserEntity>> = roomRepository.getUserProfile().asLiveData()
 
     fun saveImageString(imageString: String){
         viewModelScope.launch(Dispatchers.IO) {
@@ -31,6 +30,16 @@ class SharedViewModel @Inject constructor(
     fun insertUserProfile(userEntity: UserEntity){
         viewModelScope.launch(Dispatchers.IO) {
             roomRepository.insert(userEntity)
+        }
+    }
+
+    fun getUserProfile(userId: String): LiveData<List<UserEntity>>{
+           return  roomRepository.getUserProfile(userId).asLiveData()
+    }
+
+    fun updateUserProfile(userEntity: UserEntity){
+        viewModelScope.launch(Dispatchers.IO) {
+            roomRepository.updateProfile(userEntity)
         }
     }
 

@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,7 @@ import com.starsolns.e_shop.ui.activities.HomeActivity
 import com.starsolns.e_shop.util.Constants
 import com.starsolns.e_shop.util.Constants.Companion.CAMERA_OPTION_CODE
 import com.starsolns.e_shop.util.Constants.Companion.GALLERY_OPTION_CODE
+import com.starsolns.e_shop.util.Constants.Companion.USERS
 import com.starsolns.e_shop.util.ProgressButton
 import com.starsolns.e_shop.viewmodel.SharedViewModel
 import kotlinx.coroutines.Dispatchers
@@ -117,20 +119,23 @@ class EditProfileFragment : Fragment() {
                             user.email,
                             user.phone,
                             user.dob,
-                            user.gender
+                            user.gender,
+                            user.id
                         )
 
                     sharedViewModel.insertUserProfile(userEntity)
 
 
                    binding.editProfileImage.load(user.profilePicture)
-                   sharedViewModel.userProfile.observe(viewLifecycleOwner){ profile->
+                   sharedViewModel.getUserProfile(firebaseUser).observe(viewLifecycleOwner){ profile->
                        if(profile.isNotEmpty()){
                            binding.editEmailId.setText(profile[0].email)
                            binding.editFirstName.setText(profile[0].firstName)
                            binding.editLastName.setText(profile[0].lastName)
                            binding.editDob.setText(profile[0].dob)
                            binding.editPhone.setText(profile[0].phone)
+
+                           Log.i("TAG", profile.toString())
                        }else {
                            binding.editEmailId.setText(user.email)
                            binding.editFirstName.setText(user.firstName)
@@ -140,16 +145,59 @@ class EditProfileFragment : Fragment() {
                        }
                    }
 
-
-
-
                     binding.saveProfileUpdate.loginRegisterAccessButton.setOnClickListener {
+                        dialog.showProgressBar()
+                        val gender = if(binding.genderMale.isChecked){
+                            "male"
+                        }else {
+                            "female"
+                        }
 
+                        val userInfo = HashMap<String, Any>()
+                        userInfo["firstName"] = binding.editFirstName.text.toString().trim()
+                        userInfo["lastName"] = binding.editLastName.text.toString().trim()
+                        userInfo["dob"] = binding.editDob.text.toString().trim()
+                        userInfo["phone"] = binding.editPhone.text.toString().trim()
+                        userInfo["gender"] = gender
+
+
+                        db.collection(USERS)
+                            .document(firebaseUser)
+                            .update(userInfo)
+                            .addOnSuccessListener {info->
+                                dialog.dismissProfileUpdateProgressBar()
+                                updateUserProfileCache()
+                                findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
+                            }
+                            .addOnFailureListener { exception->
+                                Toast.makeText(requireContext(), exception.message.toString(), Toast.LENGTH_SHORT).show()
+                            }
                     }
 
                 }
         }
 
+    }
+
+    private fun updateUserProfileCache() {
+        val db = Firebase.firestore
+        db.collection(USERS)
+            .document(firebaseUser)
+            .get()
+            .addOnSuccessListener { data->
+                val userInfo = data.toObject<Users>()
+
+                val userUpdate = UserEntity(
+                    userInfo!!.firstName,
+                    userInfo.lastName,
+                    userInfo.email,
+                    userInfo.phone,
+                    userInfo.dob,
+                    userInfo.gender,
+                    userInfo.id)
+
+                sharedViewModel.updateUserProfile(userUpdate)
+            }
     }
 
     private fun showBottomSheetOptions() {

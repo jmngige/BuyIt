@@ -39,6 +39,11 @@ class ProgressButton(ctx: Context, view: View) {
         btn_text.text = "Link Sent Successfully"
     }
 
+    fun dismissProfileUpdateProgressBar(){
+        progressBar.visibility = View.INVISIBLE
+        btn_text.text = "Updated Successfully"
+    }
+
     fun dismissResetProgressBarError(){
         progressBar.visibility = View.INVISIBLE
         btn_text.text = "Submit"

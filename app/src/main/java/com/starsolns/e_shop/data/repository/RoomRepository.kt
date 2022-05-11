@@ -16,8 +16,12 @@ class RoomRepository @Inject constructor(
         shopDao.insertUser(userEntity)
     }
 
-    fun getUserProfile(): Flow<List<UserEntity>>{
-        return shopDao.userProfile()
+    suspend fun updateProfile(userEntity: UserEntity){
+        shopDao.updateProfile(userEntity)
+    }
+
+    fun getUserProfile(userId: String): Flow<List<UserEntity>>{
+        return shopDao.userProfile(userId)
     }
 
 }
