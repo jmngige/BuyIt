@@ -1,8 +1,10 @@
 package com.starsolns.e_shop.ui.fragments.home.profile
 
 import android.Manifest
+import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -14,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import coil.load
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -28,6 +31,8 @@ import com.starsolns.e_shop.databinding.FragmentEditProfileBinding
 import com.starsolns.e_shop.databinding.ImageProfileBottomSheetBinding
 import com.starsolns.e_shop.ui.activities.HomeActivity
 import com.starsolns.e_shop.util.Constants
+import com.starsolns.e_shop.util.Constants.Companion.CAMERA_OPTION_CODE
+import com.starsolns.e_shop.util.Constants.Companion.GALLERY_OPTION_CODE
 import com.starsolns.e_shop.util.ProgressButton
 import com.starsolns.e_shop.viewmodel.SharedViewModel
 
@@ -79,7 +84,7 @@ class EditProfileFragment : Fragment() {
     }
 
     private fun showBottomSheetOptions() {
-        val bottomSheetDialog = BottomSheetDialog(requireActivity(), R.style.Theme_BottomSheetCustomStyle)
+        val bottomSheetDialog = BottomSheetDialog(requireActivity(), R.style.Theme_BottomSheetCustomStyleTheme)
         val customBinding: ImageProfileBottomSheetBinding = ImageProfileBottomSheetBinding.inflate(layoutInflater)
         bottomSheetDialog.setContentView(customBinding.root)
 
@@ -89,7 +94,8 @@ class EditProfileFragment : Fragment() {
                 bottomSheetDialog.dismiss()
             }
             chooseFromGalleryText.setOnClickListener {
-                bottomSheetDialog.dismissWithAnimation
+                loadImageFromGallery()
+                bottomSheetDialog.dismiss()
             }
             removeProfileText.setOnClickListener {
                 bottomSheetDialog.dismiss()
@@ -124,7 +130,7 @@ class EditProfileFragment : Fragment() {
         }).onSameThread().check()
     }
 
-    private fun requestGalleryAccessPermissions(){
+    private fun loadImageFromGallery(){
         Dexter.withContext(requireContext()).withPermission(
             Manifest.permission.READ_EXTERNAL_STORAGE
         ).withListener(object : PermissionListener {
@@ -165,6 +171,24 @@ class EditProfileFragment : Fragment() {
             .setNegativeButton("Cancel"){dialog,_->
                 dialog.dismiss()
             }.show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK){
+            if(requestCode == CAMERA_OPTION_CODE){
+                data?.extras?.let {
+                    val imageBitmap = data.extras!!.get("data") as Bitmap
+                    binding.editProfileImage.load(imageBitmap)
+                }
+            }
+            if(requestCode == GALLERY_OPTION_CODE){
+                data?.let {
+                val imageBitmap = data.data
+                binding.editProfileImage.load(imageBitmap)
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
