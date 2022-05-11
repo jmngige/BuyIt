@@ -6,6 +6,7 @@ data class Users (
     val lastName: String = "",
     val email: String = "",
     val phone: String = "",
+    val dob: String = "",
     val gender: String = "",
     val profilePicture: String = "",
     val profileComplete: Int = 0

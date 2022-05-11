@@ -9,18 +9,19 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.Fragment
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
@@ -36,6 +37,7 @@ import com.karumi.dexter.listener.single.PermissionListener
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentEditProfileBinding
 import com.starsolns.e_shop.databinding.ImageProfileBottomSheetBinding
+import com.starsolns.e_shop.model.UserEntity
 import com.starsolns.e_shop.model.Users
 import com.starsolns.e_shop.ui.activities.HomeActivity
 import com.starsolns.e_shop.util.Constants
@@ -49,7 +51,7 @@ import kotlinx.coroutines.launch
 
 class EditProfileFragment : Fragment() {
 
-    private var _binding: FragmentEditProfileBinding? =null
+    private var _binding: FragmentEditProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var toolbar: Toolbar
 
@@ -72,6 +74,7 @@ class EditProfileFragment : Fragment() {
         auth = Firebase.auth
         firebaseUser = auth.currentUser!!.uid
 
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
 
         toolbar = binding.editProfileToolBar
         toolbar.setNavigationOnClickListener {
@@ -105,13 +108,40 @@ class EditProfileFragment : Fragment() {
             db.collection(Constants.USERS)
                 .document(firebaseUser)
                 .get()
-                .addOnSuccessListener {result->
+                .addOnSuccessListener { result ->
                     val user = result.toObject<Users>()
-                    binding.editEmailId.setText(user!!.email)
-                    binding.editFirstName.setText(user.firstName)
-                    binding.editLastName.setText(user.lastName)
-                    binding.editPhone.setText(user.phone)
-                    binding.editProfileImage.load(user?.profilePicture)
+
+                    val userEntity =  UserEntity(
+                            user!!.firstName,
+                            user.lastName,
+                            user.email,
+                            user.phone,
+                            user.dob,
+                            user.gender
+                        )
+
+                    sharedViewModel.insertUserProfile(userEntity)
+
+
+                   binding.editProfileImage.load(user.profilePicture)
+                   sharedViewModel.userProfile.observe(viewLifecycleOwner){ profile->
+                       if(profile.isNotEmpty()){
+                           binding.editEmailId.setText(profile[0].email)
+                           binding.editFirstName.setText(profile[0].firstName)
+                           binding.editLastName.setText(profile[0].lastName)
+                           binding.editDob.setText(profile[0].dob)
+                           binding.editPhone.setText(profile[0].phone)
+                       }else {
+                           binding.editEmailId.setText(user.email)
+                           binding.editFirstName.setText(user.firstName)
+                           binding.editLastName.setText(user.lastName)
+                           binding.editDob.setText(user.dob)
+                           binding.editPhone.setText(user.phone)
+                       }
+                   }
+
+
+
 
                     binding.saveProfileUpdate.loginRegisterAccessButton.setOnClickListener {
 
@@ -123,8 +153,10 @@ class EditProfileFragment : Fragment() {
     }
 
     private fun showBottomSheetOptions() {
-        val bottomSheetDialog = BottomSheetDialog(requireActivity(), R.style.Theme_BottomSheetCustomStyleTheme)
-        val customBinding: ImageProfileBottomSheetBinding = ImageProfileBottomSheetBinding.inflate(layoutInflater)
+        val bottomSheetDialog =
+            BottomSheetDialog(requireActivity(), R.style.Theme_BottomSheetCustomStyleTheme)
+        val customBinding: ImageProfileBottomSheetBinding =
+            ImageProfileBottomSheetBinding.inflate(layoutInflater)
         bottomSheetDialog.setContentView(customBinding.root)
 
         customBinding.apply {
@@ -152,7 +184,7 @@ class EditProfileFragment : Fragment() {
         ).withListener(object : MultiplePermissionsListener {
             override fun onPermissionsChecked(permReport: MultiplePermissionsReport?) {
                 permReport?.let {
-                    if(permReport.areAllPermissionsGranted()) {
+                    if (permReport.areAllPermissionsGranted()) {
                         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                         startActivityForResult(cameraIntent, Constants.CAMERA_OPTION_CODE)
                     }
@@ -169,17 +201,22 @@ class EditProfileFragment : Fragment() {
         }).onSameThread().check()
     }
 
-    private fun loadImageFromGallery(){
+    private fun loadImageFromGallery() {
         Dexter.withContext(requireContext()).withPermission(
             Manifest.permission.READ_EXTERNAL_STORAGE
         ).withListener(object : PermissionListener {
             override fun onPermissionGranted(perms: PermissionGrantedResponse?) {
-                val galleryIntent = Intent(Intent.ACTION_PICK,  MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                val galleryIntent =
+                    Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 startActivityForResult(galleryIntent, Constants.GALLERY_OPTION_CODE)
             }
 
             override fun onPermissionDenied(p0: PermissionDeniedResponse?) {
-                Toast.makeText(requireContext(), resources.getString(R.string.permissions_denied), Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    resources.getString(R.string.permissions_denied),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
             override fun onPermissionRationaleShouldBeShown(
@@ -196,35 +233,35 @@ class EditProfileFragment : Fragment() {
         AlertDialog.Builder(requireActivity())
             .setTitle(resources.getString(R.string.permissions_denied_title))
             .setMessage(resources.getString(R.string.permissions_denied))
-            .setPositiveButton("Settings"){_,_->
-                try{
+            .setPositiveButton("Settings") { _, _ ->
+                try {
                     val settingsIntent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                     val uri = Uri.fromParts("package", requireContext().packageName, null)
                     settingsIntent.data = uri
                     startActivity(settingsIntent)
 
-                }catch (e: ActivityNotFoundException){
+                } catch (e: ActivityNotFoundException) {
                     Toast.makeText(requireContext(), "Please try again", Toast.LENGTH_SHORT).show()
                 }
             }
-            .setNegativeButton("Cancel"){dialog,_->
+            .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()
             }.show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK){
-            if(requestCode == CAMERA_OPTION_CODE){
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == CAMERA_OPTION_CODE) {
                 data?.extras?.let {
                     val imageBitmap = data.extras!!.get("data") as Bitmap
                     binding.editProfileImage.load(imageBitmap)
                 }
             }
-            if(requestCode == GALLERY_OPTION_CODE){
+            if (requestCode == GALLERY_OPTION_CODE) {
                 data?.let {
-                val imageBitmap = data.data
-                binding.editProfileImage.load(imageBitmap)
+                    val imageBitmap = data.data
+                    binding.editProfileImage.load(imageBitmap)
                 }
             }
         }

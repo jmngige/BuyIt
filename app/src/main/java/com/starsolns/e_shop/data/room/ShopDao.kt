@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.starsolns.e_shop.model.UserEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ShopDao {
@@ -13,6 +14,6 @@ interface ShopDao {
     suspend fun insertUser(userEntity: UserEntity)
 
     @Query("SELECT * FROM user_profile")
-    suspend fun userProfile(): LiveData<UserEntity>
+    fun userProfile(): Flow<List<UserEntity>>
 
 }
