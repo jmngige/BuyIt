@@ -7,7 +7,7 @@ data class Users (
     val email: String = "",
     val phone: String = "",
     val dob: String = "",
-    val gender: String = "",
+    var gender: String = "",
     val profilePicture: String = "",
     val profileComplete: Int = 0
 ){}

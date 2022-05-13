@@ -142,6 +142,7 @@ class EditProfileFragment : Fragment() {
                            binding.editLastName.setText(user.lastName)
                            binding.editDob.setText(user.dob)
                            binding.editPhone.setText(user.phone)
+
                        }
                    }
 
