@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -159,11 +161,12 @@ class EditProfileFragment : Fragment() {
 
     private fun updateUserProfileDetails(){
         dialog.showProgressBar()
-        val storageRef = Firebase.storage.reference
-        val profileImageRef = storageRef.child("Images").child("Profile Images")
+        val storageRef: StorageReference = Firebase.storage.reference
+        val profileImageRef = storageRef.child("Images")
 
         if(profileImageUri != null){
-            profileImageRef.putFile(profileImageUri!!).addOnSuccessListener { taskSnapshot->
+            if(validateEntries()){
+                profileImageRef.putFile(profileImageUri!!).addOnSuccessListener { taskSnapshot->
                 taskSnapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener { url->
                     saveImageAndProfileUpdates(url.toString())
                 }
@@ -171,10 +174,43 @@ class EditProfileFragment : Fragment() {
                 dialog.dismissResetProgressBarError()
                 Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()
             }
+            }else{
+                dialog.dismissResetProgressBarError()
+            }
         }
 
+    }
 
+    private fun validateEntries(): Boolean{
+        val firstName = binding.editFirstName.text.toString().trim()
+        val lastName = binding.editLastName.text.toString().trim()
+        val phone = binding.editPhone.text.toString().trim()
 
+        if(firstName.isEmpty()){
+            binding.txtInputEditFirstName.helperText = "First Name Required"
+            return false
+        }else{
+            binding.txtInputEditFirstName.helperText = null
+        }
+        if(lastName.isEmpty()){
+            binding.txtInputEditLastName.helperText = "Last Name Required"
+            return false
+        }else {
+            binding.txtInputEditLastName.helperText = null
+        }
+        if (phone.isEmpty()){
+            binding.txtInputEditPhone.helperText = "Phone Required"
+            return false
+        } else {
+            binding.txtInputEditPhone.helperText = null
+        }
+        if(phone.length != 10){
+            binding.txtInputEditPhone.helperText = "Phone must be 10 Digits"
+            return true
+        }else {
+            binding.txtInputEditPhone.helperText = null
+        }
+        return true
     }
 
     private fun saveImageAndProfileUpdates(url: String) {
@@ -207,7 +243,6 @@ class EditProfileFragment : Fragment() {
                 Toast.makeText(requireContext(), exception.message.toString(), Toast.LENGTH_SHORT).show()
             }
     }
-
 
     private fun updateUserProfileCache() {
         val db = Firebase.firestore
