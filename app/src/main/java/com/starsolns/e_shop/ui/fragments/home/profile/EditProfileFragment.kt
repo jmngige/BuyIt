@@ -65,6 +65,8 @@ class EditProfileFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firebaseUser: String
 
+    private var profileImageUri: Uri? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -303,14 +305,14 @@ class EditProfileFragment : Fragment() {
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == CAMERA_OPTION_CODE) {
                 data?.extras?.let {
-                    val imageBitmap = data.extras!!.get("data") as Bitmap
-                    binding.editProfileImage.load(imageBitmap)
+                   val profileImage = data.extras!!.get("data") as Bitmap
+                    binding.editProfileImage.load(profileImage)
                 }
             }
             if (requestCode == GALLERY_OPTION_CODE) {
                 data?.let {
-                    val imageBitmap = data.data
-                    binding.editProfileImage.load(imageBitmap)
+                   profileImageUri = data.data
+                    binding.editProfileImage.load(profileImageUri)
                 }
             }
         }
