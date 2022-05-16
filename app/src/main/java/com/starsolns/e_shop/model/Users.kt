@@ -8,6 +8,6 @@ data class Users (
     val phone: String = "",
     val dob: String = "",
     var gender: String = "",
-    val profilePicture: String = "",
+    val profilePicture: String? = "",
     val profileComplete: Int = 0
 ){}

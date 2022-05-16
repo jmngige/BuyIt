@@ -27,6 +27,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -144,43 +145,69 @@ class EditProfileFragment : Fragment() {
                            binding.editLastName.setText(user.lastName)
                            binding.editDob.setText(user.dob)
                            binding.editPhone.setText(user.phone)
-
                        }
                    }
 
                     binding.saveProfileUpdate.loginRegisterAccessButton.setOnClickListener {
-                        dialog.showProgressBar()
-                        val gender = if(binding.genderMale.isChecked){
-                            "male"
-                        }else {
-                            "female"
-                        }
-
-                        val userInfo = HashMap<String, Any>()
-                        userInfo["firstName"] = binding.editFirstName.text.toString().trim()
-                        userInfo["lastName"] = binding.editLastName.text.toString().trim()
-                        userInfo["dob"] = binding.editDob.text.toString().trim()
-                        userInfo["phone"] = binding.editPhone.text.toString().trim()
-                        userInfo["gender"] = gender
-
-
-                        db.collection(USERS)
-                            .document(firebaseUser)
-                            .update(userInfo)
-                            .addOnSuccessListener {info->
-                                dialog.dismissProfileUpdateProgressBar()
-                                updateUserProfileCache()
-                                findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
-                            }
-                            .addOnFailureListener { exception->
-                                Toast.makeText(requireContext(), exception.message.toString(), Toast.LENGTH_SHORT).show()
-                            }
+                        updateUserProfileDetails()
                     }
 
                 }
         }
 
     }
+
+    private fun updateUserProfileDetails(){
+        dialog.showProgressBar()
+        val storageRef = Firebase.storage.reference
+        val profileImageRef = storageRef.child("Images").child("Profile Images")
+
+        if(profileImageUri != null){
+            profileImageRef.putFile(profileImageUri!!).addOnSuccessListener { taskSnapshot->
+                taskSnapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener { url->
+                    saveImageAndProfileUpdates(url.toString())
+                }
+            }.addOnFailureListener {
+                dialog.dismissResetProgressBarError()
+                Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+
+    }
+
+    private fun saveImageAndProfileUpdates(url: String) {
+        val db = Firebase.firestore
+        val gender = if(binding.genderMale.isChecked){
+            "male"
+        }else {
+            "female"
+        }
+
+        val userInfo = HashMap<String, Any>()
+        userInfo["firstName"] = binding.editFirstName.text.toString().trim()
+        userInfo["lastName"] = binding.editLastName.text.toString().trim()
+        userInfo["dob"] = binding.editDob.text.toString().trim()
+        userInfo["phone"] = binding.editPhone.text.toString().trim()
+        userInfo["gender"] = gender
+        userInfo["profilePicture"] = url
+
+
+        db.collection(USERS)
+            .document(firebaseUser)
+            .update(userInfo)
+            .addOnSuccessListener { info->
+                dialog.dismissProfileUpdateProgressBar()
+                updateUserProfileCache()
+                findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
+            }
+            .addOnFailureListener { exception->
+                dialog.dismissResetProgressBarError()
+                Toast.makeText(requireContext(), exception.message.toString(), Toast.LENGTH_SHORT).show()
+            }
+    }
+
 
     private fun updateUserProfileCache() {
         val db = Firebase.firestore
