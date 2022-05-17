@@ -42,4 +42,6 @@
     <string name="remove_profile_photo_text">Remove Profile Photo</string>
     <string name="permissions_denied">The application requires this permission enabled to continue</string>
     <string name="permissions_denied_title">!Warning</string>
+    <string name="fill_profile_details">Please fill in all profile details</string>
+    <string name="select_profile_image">Please select an image for your profile</string>
 </resources>

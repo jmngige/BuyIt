@@ -14,6 +14,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
@@ -68,7 +69,7 @@ class EditProfileFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firebaseUser: String
 
-    private var profileImageUri: Uri? = null
+    private  var profileImageUri: Uri? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -100,7 +101,6 @@ class EditProfileFragment : Fragment() {
 
 
         loadUserDetails()
-
 
 
         setHasOptionsMenu(true)
@@ -140,7 +140,6 @@ class EditProfileFragment : Fragment() {
                            binding.editDob.setText(profile[0].dob)
                            binding.editPhone.setText(profile[0].phone)
 
-                           Log.i("TAG", profile.toString())
                        }else {
                            binding.editEmailId.setText(user.email)
                            binding.editFirstName.setText(user.firstName)
@@ -161,22 +160,23 @@ class EditProfileFragment : Fragment() {
 
     private fun updateUserProfileDetails(){
         dialog.showProgressBar()
-        val storageRef: StorageReference = Firebase.storage.reference
-        val profileImageRef = storageRef.child("Images")
-
+        val storage= Firebase.storage
+        val ext = MimeTypeMap.getSingleton().getExtensionFromMimeType(requireActivity().contentResolver.getType(profileImageUri!!))
+        val profileImageRef = storage.getReference("Images/Profile Images").child(firebaseUser + "_" + System.currentTimeMillis() + "." + ext)
         if(profileImageUri != null){
             if(validateEntries()){
-                profileImageRef.putFile(profileImageUri!!).addOnSuccessListener { taskSnapshot->
-                taskSnapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener { url->
-                    saveImageAndProfileUpdates(url.toString())
+                profileImageRef.putFile(profileImageUri!!).addOnSuccessListener { taskSnapShot->
+                    taskSnapShot.metadata!!.reference!!.downloadUrl.addOnSuccessListener { uri->
+                        saveImageAndProfileUpdates(uri.toString())
+                    }
                 }
-            }.addOnFailureListener {
-                dialog.dismissResetProgressBarError()
-                Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()
-            }
             }else{
                 dialog.dismissResetProgressBarError()
+                Toast.makeText(requireContext(), resources.getString(R.string.fill_profile_details), Toast.LENGTH_SHORT).show()
             }
+        }else {
+            dialog.dismissResetProgressBarError()
+            Toast.makeText(requireContext(), resources.getString(R.string.select_profile_image), Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -373,7 +373,7 @@ class EditProfileFragment : Fragment() {
             }
             if (requestCode == GALLERY_OPTION_CODE) {
                 data?.let {
-                   profileImageUri = data.data
+                   profileImageUri = data.data!!
                     binding.editProfileImage.load(profileImageUri)
                 }
             }
