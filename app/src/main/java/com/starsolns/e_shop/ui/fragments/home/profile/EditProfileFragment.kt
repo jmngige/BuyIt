@@ -130,8 +130,10 @@ class EditProfileFragment : Fragment() {
 
                     sharedViewModel.insertUserProfile(userEntity)
 
+                    if(user.profilePicture!!.isNotEmpty()){
+                        binding.editProfileImage.load(user.profilePicture)
+                    }
 
-                   binding.editProfileImage.load(user.profilePicture)
                    sharedViewModel.getUserProfile(firebaseUser).observe(viewLifecycleOwner){ profile->
                        if(profile.isNotEmpty()){
                            binding.editEmailId.setText(profile[0].email)
@@ -175,8 +177,9 @@ class EditProfileFragment : Fragment() {
                 Toast.makeText(requireContext(), resources.getString(R.string.fill_profile_details), Toast.LENGTH_SHORT).show()
             }
         }else {
-            dialog.dismissResetProgressBarError()
-            Toast.makeText(requireContext(), resources.getString(R.string.select_profile_image), Toast.LENGTH_SHORT).show()
+            if(validateEntries()){
+            saveProfileUpdates()
+            }
         }
 
     }
@@ -211,6 +214,36 @@ class EditProfileFragment : Fragment() {
             binding.txtInputEditPhone.helperText = null
         }
         return true
+    }
+
+    private fun saveProfileUpdates(){
+        val db = Firebase.firestore
+        val gender = if(binding.genderMale.isChecked){
+            "male"
+        }else {
+            "female"
+        }
+
+        val userInfo = HashMap<String, Any>()
+        userInfo["firstName"] = binding.editFirstName.text.toString().trim()
+        userInfo["lastName"] = binding.editLastName.text.toString().trim()
+        userInfo["dob"] = binding.editDob.text.toString().trim()
+        userInfo["phone"] = binding.editPhone.text.toString().trim()
+        userInfo["gender"] = gender
+
+
+        db.collection(USERS)
+            .document(firebaseUser)
+            .update(userInfo)
+            .addOnSuccessListener { info->
+                dialog.dismissProfileUpdateProgressBar()
+                updateUserProfileCache()
+                findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
+            }
+            .addOnFailureListener { exception->
+                dialog.dismissResetProgressBarError()
+                Toast.makeText(requireContext(), exception.message.toString(), Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun saveImageAndProfileUpdates(url: String) {

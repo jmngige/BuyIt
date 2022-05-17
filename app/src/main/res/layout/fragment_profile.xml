@@ -64,7 +64,6 @@
         android:layout_height="0dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_profile_placeholder"
-        android:tint="@color/black"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/profileIconWidthColor"
         app:layout_constraintBottom_toBottomOf="@id/profile_image_bottom_guideline"
@@ -78,9 +77,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto_bold"
-        android:text="@string/profile_name"
+        android:text=""
         android:textColor="@color/darker"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="@id/profile_image"
         app:layout_constraintStart_toStartOf="@id/profile_image"
         app:layout_constraintTop_toBottomOf="@id/profile_image" />
@@ -114,8 +113,8 @@
 
                 <ImageView
                     android:id="@+id/profile_profile_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_profile"
@@ -130,12 +129,12 @@
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/edit_profile_text"
                     android:textColor="@color/darker"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:id="@+id/profile_profile_arrow"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_arrow_back" />
@@ -155,8 +154,8 @@
 
                 <ImageView
                     android:id="@+id/profile_address_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_address"
@@ -171,12 +170,12 @@
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/shipping_address_text"
                     android:textColor="@color/darker"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:id="@+id/profile_address_arrow"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_arrow_back" />
@@ -196,8 +195,8 @@
 
                 <ImageView
                     android:id="@+id/profile_wishlist_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_wishlist"
@@ -212,12 +211,12 @@
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/wishlist_text"
                     android:textColor="@color/darker"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:id="@+id/profile_wishlist_arrow"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_arrow_back" />
@@ -238,8 +237,8 @@
 
                 <ImageView
                     android:id="@+id/profile_order_history_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_history"
@@ -254,12 +253,12 @@
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/order_history_text"
                     android:textColor="@color/darker"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:id="@+id/profile_order_history_arrow"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_arrow_back" />
@@ -279,8 +278,8 @@
 
                 <ImageView
                     android:id="@+id/profile_payments_icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_payments"
@@ -295,12 +294,12 @@
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/payments_text"
                     android:textColor="@color/darker"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <ImageView
                     android:id="@+id/profile_payments_arrow"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_arrow_back" />
