@@ -44,4 +44,13 @@
     <string name="permissions_denied_title">!Warning</string>
     <string name="fill_profile_details">Please fill in all profile details</string>
     <string name="select_profile_image">Please select an image for your profile</string>
+    <string name="smartphones_category">Smartphones</string>
+    <string name="tv_s_category">TV\'s</string>
+    <string name="laptops_category">Laptops</string>
+    <string name="shoes_category">Shoes</string>
+    <string name="clothes_category">Clothes</string>
+    <string name="watches_category">Watches</string>
+    <string name="beauty_category">Beauty</string>
+    <string name="kitchen_category">Kitchen</string>
+    <string name="bedroom_category">Bedroom</string>
 </resources>

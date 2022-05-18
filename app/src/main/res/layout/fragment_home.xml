@@ -74,15 +74,121 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".80"/>
+        app:layout_constraintGuide_percent=".90"/>
 
-    <com.google.android.material.textfield.TextInputEditText
+<!--    <com.google.android.material.textfield.TextInputEditText-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/guideline1"-->
+<!--        app:layout_constraintStart_toStartOf="@id/home_out_left_guideline"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/home_out_right_guideline"-->
+<!--        android:background="@drawable/searchview_background"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:hint="Search..."-->
+<!--        android:paddingStart="15dp"-->
+<!--        android:paddingEnd="15dp"-->
+<!--        app:actionViewClass="androidx.appcompat.widget.SearchView"-->
+<!--        android:drawableLeft="@drawable/ic_search"-->
+<!--        android:id="@+id/search_products"/>-->
+
+    <androidx.appcompat.widget.SearchView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/guideline1"
+        app:layout_constraintStart_toStartOf="@id/home_out_left_guideline"
+        app:layout_constraintEnd_toEndOf="@id/home_out_right_guideline"
+        android:id="@+id/search_products"
+        android:layout_marginTop="12dp"
+        app:queryHint="Search..."
+        android:padding="8dp"
+        android:focusable="false"
+        app:iconifiedByDefault="false"
+        android:background="@drawable/searchview_background"/>
+
+    <HorizontalScrollView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/search_products"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/search_products"/>
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:id="@+id/filter_products_chip_group">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/smartphones_category"
+                    android:id="@+id/filter_smartphones"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_s_category"
+                    android:id="@+id/filter_tvs"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/laptops_category"
+                    android:id="@+id/filter_laptops"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shoes_category"
+                    android:id="@+id/filter_shoes"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/clothes_category"
+                    android:id="@+id/filter_clothes"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/watches_category"
+                    android:id="@+id/filter_watches"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/beauty_category"
+                    android:id="@+id/filter_beauty"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kitchen_category"
+                    android:id="@+id/filter_kitchen"/>
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bedroom_category"
+                    android:id="@+id/filter_bedroom"/>
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </LinearLayout>
+
+
+
+
+    </HorizontalScrollView>
+
+
 
 
 
