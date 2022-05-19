@@ -33,6 +33,7 @@ import com.starsolns.e_shop.util.ProgressButton
 class AddProductFragment : Fragment() {
 
     private lateinit var dialog: ProgressButton
+    private lateinit var customDialog: Dialog
 
     private var _binding: FragmentAddProductBinding? = null
     private val binding get() = _binding!!
@@ -59,7 +60,7 @@ class AddProductFragment : Fragment() {
         }
 
         binding.addProductCategory.setOnClickListener {
-            setProductCategory(resources.getString(R.string.categories_title), Constants.getAllCategories(), "categories")
+            displayProductCategories(resources.getString(R.string.categories_title), Constants.getAllCategories(), "categories")
         }
 
         return binding.root
@@ -113,8 +114,8 @@ class AddProductFragment : Fragment() {
             }.show()
     }
 
-    private fun setProductCategory(title: String, categoriesList: List<String>, selection: String){
-        val customDialog = Dialog(requireActivity())
+    private fun displayProductCategories(title: String, categoriesList: List<String>, selection: String){
+        customDialog = Dialog(requireActivity())
         val customListBinding = CategoryListLayoutBinding.inflate(layoutInflater)
         customDialog.setContentView(customListBinding.root)
         customListBinding.categoriesListTitle.text = title
@@ -126,6 +127,16 @@ class AddProductFragment : Fragment() {
         customDialog.show()
 
     }
+
+    fun selectProductCategory(category: String, selection: String){
+        when(selection){
+            "categories"->{
+                customDialog.dismiss()
+                binding.addProductCategory.setText(category)
+            }
+        }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

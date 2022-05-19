@@ -1,10 +1,13 @@
 package com.starsolns.e_shop.ui.adapter
 
 import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.starsolns.e_shop.databinding.CategoryListItemBinding
+import com.starsolns.e_shop.ui.fragments.home.home.AddProductFragment
 
 class CategoryListAdapter(
     private val activity: Activity,
@@ -20,6 +23,11 @@ class CategoryListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentCategory = categoriesList[position]
         holder.category.text = currentCategory
+
+        holder.itemView.setOnClickListener {
+           val fragment = AddProductFragment()
+            fragment.selectProductCategory(currentCategory, selection)
+        }
     }
 
     override fun getItemCount(): Int {
