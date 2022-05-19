@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentHomeBinding
+import com.starsolns.e_shop.ui.activities.HomeActivity
 
 class HomeFragment : Fragment() {
 
@@ -23,9 +24,19 @@ class HomeFragment : Fragment() {
 
         binding.addProductButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_addProductFragment)
+            if(requireActivity() is HomeActivity){
+                (activity as HomeActivity).hideBottomNavBar()
+            }
         }
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(requireActivity() is HomeActivity){
+            (activity as HomeActivity).showBottomNavBar()
+        }
     }
 
     override fun onDestroyView() {
