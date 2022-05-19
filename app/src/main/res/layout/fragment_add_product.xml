@@ -61,6 +61,7 @@
                 android:layout_height="45dp"
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="12dp"
+                app:tint="@color/white"
                 android:src="@drawable/ic_add_photo"
                 app:layout_constraintBottom_toBottomOf="@+id/product_image"
                 app:layout_constraintEnd_toEndOf="@+id/product_image" />
@@ -72,6 +73,7 @@
                 android:visibility="invisible"
                 android:src="@drawable/ic_edit_photo"
                 android:layout_marginEnd="12dp"
+                app:tint="@color/white"
                 android:layout_marginBottom="12dp"
                 app:layout_constraintBottom_toBottomOf="@+id/product_image"
                 app:layout_constraintEnd_toEndOf="@+id/product_image" />
