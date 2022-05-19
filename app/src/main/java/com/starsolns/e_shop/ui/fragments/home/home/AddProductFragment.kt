@@ -1,6 +1,7 @@
 package com.starsolns.e_shop.ui.fragments.home.home
 
 import android.Manifest
+import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -14,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -21,8 +23,10 @@ import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.starsolns.e_shop.R
+import com.starsolns.e_shop.databinding.CategoryListLayoutBinding
 import com.starsolns.e_shop.databinding.FragmentAddProductBinding
 import com.starsolns.e_shop.ui.activities.HomeActivity
+import com.starsolns.e_shop.ui.adapter.CategoryListAdapter
 import com.starsolns.e_shop.util.Constants
 import com.starsolns.e_shop.util.ProgressButton
 
@@ -52,6 +56,10 @@ class AddProductFragment : Fragment() {
 
         binding.addProductImage.setOnClickListener {
             loadImagesFromGallery()
+        }
+
+        binding.addProductCategory.setOnClickListener {
+            setProductCategory(resources.getString(R.string.categories_title), Constants.getAllCategories(), "categories")
         }
 
         return binding.root
@@ -105,6 +113,19 @@ class AddProductFragment : Fragment() {
             }.show()
     }
 
+    private fun setProductCategory(title: String, categoriesList: List<String>, selection: String){
+        val customDialog = Dialog(requireActivity())
+        val customListBinding = CategoryListLayoutBinding.inflate(layoutInflater)
+        customDialog.setContentView(customListBinding.root)
+        customListBinding.categoriesListTitle.text = title
+
+        val listAdapter = CategoryListAdapter(requireActivity(), categoriesList, selection)
+        customListBinding.categoriesListRv.layoutManager = LinearLayoutManager(requireActivity())
+        customListBinding.categoriesListRv.adapter = listAdapter
+
+        customDialog.show()
+
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

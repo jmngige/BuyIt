@@ -7,8 +7,8 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.starsolns.e_shop.util.Constants.Companion.DATASTORE_PREF_NAME
-import com.starsolns.e_shop.util.Constants.Companion.IMAGE_STRING_KEY
+import com.starsolns.e_shop.util.Constants.DATASTORE_PREF_NAME
+import com.starsolns.e_shop.util.Constants.IMAGE_STRING_KEY
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.flow.Flow

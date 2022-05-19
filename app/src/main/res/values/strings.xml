@@ -59,4 +59,5 @@
     <string name="category_hint">Category</string>
     <string name="quantity_hint">Quantity</string>
     <string name="price_price">Price</string>
+    <string name="categories_title">Select Category</string>
 </resources>
