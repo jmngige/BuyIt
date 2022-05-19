@@ -53,4 +53,10 @@
     <string name="beauty_category">Beauty</string>
     <string name="kitchen_category">Kitchen</string>
     <string name="bedroom_category">Bedroom</string>
+    <string name="product_name_hint">Product name</string>
+    <string name="product_description_hint">Product description</string>
+    <string name="rich_product_description_hint">Rich product description</string>
+    <string name="category_hint">Category</string>
+    <string name="quantity_hint">Quantity</string>
+    <string name="price_price">Price</string>
 </resources>

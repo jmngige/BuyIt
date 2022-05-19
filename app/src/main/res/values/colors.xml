@@ -49,7 +49,8 @@
     <color name="changeProfileImageTextColor">#018538</color>
 
 
-
+    <!-- Home Screen -->
+    <color name="addProductTitleTextColor">#FFFFFF</color>
 
     <!-- Recipe Items card Background -->
     <color name="recipeItemBackground">@color/white</color>

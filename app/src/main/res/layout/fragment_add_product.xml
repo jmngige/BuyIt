@@ -1,14 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.home.home.AddProductFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/add_product_appBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/add_product_toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:titleTextColor="@color/addProductTitleTextColor">
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/product_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/medium_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/add_product_appBar" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".30"/>
+
+    <ImageView
+        android:id="@+id/add_product_image"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/ic_add_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/product_image"
+        app:layout_constraintEnd_toEndOf="@+id/product_image" />
+
+    <ImageView
+        android:id="@+id/edit_product_image"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:visibility="invisible"
+        android:src="@drawable/ic_edit_photo"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/product_image"
+        app:layout_constraintEnd_toEndOf="@+id/product_image" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInput_add_product_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:helperText=""
+        app:helperTextTextColor="@android:color/holo_red_light"
+        android:layout_marginTop="20dp"
+        android:hint="@string/product_name_hint"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
+        app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/product_image">
+
+        <EditText
+            android:id="@+id/add_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:padding="15dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInput_add_product_price"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:helperText=""
+        app:helperTextTextColor="@android:color/holo_red_light"
+        android:layout_marginTop="12dp"
+        android:hint="@string/price_price"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
+        app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtInput_add_product_name">
+
+        <EditText
+            android:id="@+id/add_product_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:padding="15dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInput_add_product_description"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:helperText=""
+        app:helperTextTextColor="@android:color/holo_red_light"
+        android:layout_marginTop="12dp"
+        android:hint="@string/product_description_hint"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
+        app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtInput_add_product_price">
+
+        <EditText
+            android:id="@+id/add_product_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:padding="15dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInput_add_product_rich_description"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:helperText=""
+        app:helperTextTextColor="@android:color/holo_red_light"
+        android:layout_marginTop="12dp"
+        android:hint="@string/rich_product_description_hint"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
+        app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtInput_add_product_description">
+
+        <EditText
+            android:id="@+id/add_product_rich_description"
+            android:layout_width="match_parent"
+            android:minLines="3"
+            android:gravity="top"
+            android:layout_height="wrap_content"
+            android:padding="15dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInput_add_product_category"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:helperText=""
+        app:helperTextTextColor="@android:color/holo_red_light"
+        android:layout_marginTop="12dp"
+        android:hint="@string/category_hint"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
+        app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtInput_add_product_rich_description">
+
+        <EditText
+            android:id="@+id/add_product_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="textPersonName"
+            android:padding="15dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInput_add_product_quantity"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:helperText=""
+        app:helperTextTextColor="@android:color/holo_red_light"
+        android:layout_marginTop="12dp"
+        android:hint="@string/quantity_hint"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
+        app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtInput_add_product_category">
+
+        <EditText
+            android:id="@+id/add_product_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:padding="15dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/add_product_LeftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/add_product_RightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".94" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

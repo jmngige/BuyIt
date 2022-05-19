@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentAddProductBinding
 import com.starsolns.e_shop.databinding.FragmentHomeBinding
+import com.starsolns.e_shop.ui.activities.HomeActivity
 
 class AddProductFragment : Fragment() {
 
@@ -20,7 +21,7 @@ class AddProductFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentAddProductBinding.inflate(layoutInflater, container, false)
-
+        (context as HomeActivity).setUpSupportCustomActionBar(binding.addProductToolBar)
 
 
 
