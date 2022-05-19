@@ -9,8 +9,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
-import android.util.Log
-import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +27,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -46,9 +43,9 @@ import com.starsolns.e_shop.model.UserEntity
 import com.starsolns.e_shop.model.Users
 import com.starsolns.e_shop.ui.activities.HomeActivity
 import com.starsolns.e_shop.util.Constants
-import com.starsolns.e_shop.util.Constants.Companion.CAMERA_OPTION_CODE
-import com.starsolns.e_shop.util.Constants.Companion.GALLERY_OPTION_CODE
-import com.starsolns.e_shop.util.Constants.Companion.USERS
+import com.starsolns.e_shop.util.Constants.CAMERA_OPTION_CODE
+import com.starsolns.e_shop.util.Constants.GALLERY_OPTION_CODE
+import com.starsolns.e_shop.util.Constants.USERS
 import com.starsolns.e_shop.util.ProgressButton
 import com.starsolns.e_shop.viewmodel.SharedViewModel
 import kotlinx.coroutines.Dispatchers

@@ -3,7 +3,7 @@ package com.starsolns.e_shop.di
 import android.content.Context
 import androidx.room.Room
 import com.starsolns.e_shop.data.room.ShopDatabase
-import com.starsolns.e_shop.util.Constants.Companion.DATABASE_NAME
+import com.starsolns.e_shop.util.Constants.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

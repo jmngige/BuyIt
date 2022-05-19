@@ -15,7 +15,7 @@ import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentProfileBinding
 import com.starsolns.e_shop.model.Users
 import com.starsolns.e_shop.ui.activities.HomeActivity
-import com.starsolns.e_shop.util.Constants.Companion.USERS
+import com.starsolns.e_shop.util.Constants.USERS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
