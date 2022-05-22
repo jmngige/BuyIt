@@ -15,8 +15,4 @@ object Constants {
         const val DATABASE_NAME = "user_database"
 
 
-        fun getCategoriesList(){
-
-        }
-
 }

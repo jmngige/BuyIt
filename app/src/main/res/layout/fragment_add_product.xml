@@ -28,24 +28,24 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_product_appBar"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_product_appBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/products_details_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/products_details_layout">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/product_image"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@color/medium_grey"
+                app:layout_constraintBottom_toTopOf="@id/guideline1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/guideline1"
                 app:layout_constraintTop_toTopOf="@id/products_details_layout" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent=".30"/>
+                app:layout_constraintGuide_percent=".30" />
 
             <ImageView
                 android:id="@+id/add_product_image"
@@ -61,33 +61,33 @@
                 android:layout_height="45dp"
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="12dp"
-                app:tint="@color/white"
                 android:src="@drawable/ic_add_photo"
                 app:layout_constraintBottom_toBottomOf="@+id/product_image"
-                app:layout_constraintEnd_toEndOf="@+id/product_image" />
+                app:layout_constraintEnd_toEndOf="@+id/product_image"
+                app:tint="@color/white" />
 
             <ImageView
                 android:id="@+id/edit_product_image"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
-                android:visibility="invisible"
-                android:src="@drawable/ic_edit_photo"
                 android:layout_marginEnd="12dp"
-                app:tint="@color/white"
                 android:layout_marginBottom="12dp"
+                android:src="@drawable/ic_edit_photo"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/product_image"
-                app:layout_constraintEnd_toEndOf="@+id/product_image" />
+                app:layout_constraintEnd_toEndOf="@+id/product_image"
+                app:tint="@color/white" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtInput_add_product_name"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:helperText=""
-                app:helperTextTextColor="@android:color/holo_red_light"
                 android:layout_marginTop="20dp"
                 android:hint="@string/product_name_hint"
                 android:inputType="text"
+                app:helperText=""
+                app:helperTextTextColor="@android:color/holo_red_light"
                 app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
                 app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/product_image">
@@ -106,11 +106,11 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:helperText=""
-                app:helperTextTextColor="@android:color/holo_red_light"
                 android:layout_marginTop="12dp"
                 android:hint="@string/price_price"
                 android:inputType="number"
+                app:helperText=""
+                app:helperTextTextColor="@android:color/holo_red_light"
                 app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
                 app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/txtInput_add_product_name">
@@ -129,11 +129,11 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:helperText=""
-                app:helperTextTextColor="@android:color/holo_red_light"
                 android:layout_marginTop="12dp"
                 android:hint="@string/product_description_hint"
                 android:inputType="text"
+                app:helperText=""
+                app:helperTextTextColor="@android:color/holo_red_light"
                 app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
                 app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/txtInput_add_product_price">
@@ -152,11 +152,11 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:helperText=""
-                app:helperTextTextColor="@android:color/holo_red_light"
                 android:layout_marginTop="12dp"
                 android:hint="@string/rich_product_description_hint"
                 android:inputType="text"
+                app:helperText=""
+                app:helperTextTextColor="@android:color/holo_red_light"
                 app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
                 app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/txtInput_add_product_description">
@@ -164,9 +164,9 @@
                 <EditText
                     android:id="@+id/add_product_rich_description"
                     android:layout_width="match_parent"
-                    android:minLines="4"
-                    android:gravity="top"
                     android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:minLines="4"
                     android:padding="15dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -176,21 +176,21 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:helperText=""
-                app:helperTextTextColor="@android:color/holo_red_light"
                 android:layout_marginTop="12dp"
                 android:hint="@string/category_hint"
+                app:helperText=""
+                app:helperTextTextColor="@android:color/holo_red_light"
                 app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
                 app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/txtInput_add_product_rich_description">
 
                 <AutoCompleteTextView
+                    android:id="@+id/add_product_category"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="15dp"
                     android:inputType="none"
-                    android:text="@string/select_category_text"
-                    android:id="@+id/add_product_category"/>
+                    android:padding="15dp"
+                    android:text="" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -199,11 +199,11 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:helperText=""
-                app:helperTextTextColor="@android:color/holo_red_light"
                 android:layout_marginTop="12dp"
                 android:hint="@string/quantity_hint"
                 android:inputType="number"
+                app:helperText=""
+                app:helperTextTextColor="@android:color/holo_red_light"
                 app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
                 app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/txtInput_add_product_category">
@@ -218,14 +218,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <include
+                android:id="@+id/submit_product_details"
                 layout="@layout/login_register_button"
-                app:layout_constraintTop_toBottomOf="@id/txtInput_add_product_quantity"
-                app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
-                app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
-                android:id="@+id/submit_product_details"/>
+                app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
+                app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
+                app:layout_constraintTop_toBottomOf="@id/txtInput_add_product_quantity" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/add_product_LeftGuideline"
@@ -244,7 +244,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
