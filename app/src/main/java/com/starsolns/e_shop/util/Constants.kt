@@ -15,19 +15,8 @@ object Constants {
         const val DATABASE_NAME = "user_database"
 
 
-    fun getAllCategories(): ArrayList<String>{
-        val categories = ArrayList<String>()
-        categories.add("Smartphones")
-        categories.add("TV's")
-        categories.add("Laptops")
-        categories.add("Shoes")
-        categories.add("Clothes")
-        categories.add("Watches")
-        categories.add("Beauty")
-        categories.add("Kitchen")
-        categories.add("Bedroom")
+        fun getCategoriesList(){
 
-        return categories
-    }
+        }
 
 }

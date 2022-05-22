@@ -60,4 +60,20 @@
     <string name="quantity_hint">Quantity</string>
     <string name="price_price">Price</string>
     <string name="categories_title">Select Category</string>
+    <string name="smartphones_hint">Smartphones</string>
+    <string name="select_category_text">Select Category</string>
+
+    <string-array name="categories">
+        <item>Smartphones</item>
+        <item>Laptop</item>
+        <item>TV\'s</item>
+        <item>Shoes</item>
+        <item>Clothes</item>
+        <item>Watches</item>
+        <item>Beauty</item>
+        <item>Kitchen</item>
+        <item>Bedroom</item>
+        <item>Bedroom</item>
+    </string-array>
+
 </resources>

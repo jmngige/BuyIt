@@ -173,27 +173,24 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtInput_add_product_category"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:helperText=""
                 app:helperTextTextColor="@android:color/holo_red_light"
                 android:layout_marginTop="12dp"
                 android:hint="@string/category_hint"
-                android:inputType="text"
                 app:layout_constraintEnd_toEndOf="@id/add_product_RightGuideline"
                 app:layout_constraintStart_toStartOf="@id/add_product_LeftGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/txtInput_add_product_rich_description">
 
-                <EditText
-                    android:id="@+id/add_product_category"
+                <AutoCompleteTextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:inputType="textPersonName"
-                    android:padding="15dp" />
+                    android:layout_height="match_parent"
+                    android:padding="15dp"
+                    android:inputType="none"
+                    android:text="@string/select_category_text"
+                    android:id="@+id/add_product_category"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 

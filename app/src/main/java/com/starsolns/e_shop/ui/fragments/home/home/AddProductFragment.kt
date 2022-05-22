@@ -1,7 +1,6 @@
 package com.starsolns.e_shop.ui.fragments.home.home
 
 import android.Manifest
-import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -15,7 +14,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -23,17 +21,14 @@ import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.starsolns.e_shop.R
-import com.starsolns.e_shop.databinding.CategoryListLayoutBinding
 import com.starsolns.e_shop.databinding.FragmentAddProductBinding
 import com.starsolns.e_shop.ui.activities.HomeActivity
-import com.starsolns.e_shop.ui.adapter.CategoryListAdapter
 import com.starsolns.e_shop.util.Constants
 import com.starsolns.e_shop.util.ProgressButton
 
 class AddProductFragment : Fragment() {
 
     private lateinit var dialog: ProgressButton
-    private lateinit var customDialog: Dialog
 
     private var _binding: FragmentAddProductBinding? = null
     private val binding get() = _binding!!
@@ -51,6 +46,8 @@ class AddProductFragment : Fragment() {
         toolbar.setOnClickListener {
             findNavController().navigate(R.id.action_addProductFragment_to_homeFragment)
         }
+
+
         val buttonView = binding.submitProductDetails.loginRegisterAccessButton
         dialog = ProgressButton(requireContext(), buttonView)
         dialog.showSubmit()
@@ -60,7 +57,7 @@ class AddProductFragment : Fragment() {
         }
 
         binding.addProductCategory.setOnClickListener {
-            displayProductCategories(resources.getString(R.string.categories_title), Constants.getAllCategories(), "categories")
+
         }
 
         return binding.root
@@ -112,29 +109,6 @@ class AddProductFragment : Fragment() {
             .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()
             }.show()
-    }
-
-    private fun displayProductCategories(title: String, categoriesList: List<String>, selection: String){
-        customDialog = Dialog(requireActivity())
-        val customListBinding = CategoryListLayoutBinding.inflate(layoutInflater)
-        customDialog.setContentView(customListBinding.root)
-        customListBinding.categoriesListTitle.text = title
-
-        val listAdapter = CategoryListAdapter(requireActivity(), categoriesList, selection)
-        customListBinding.categoriesListRv.layoutManager = LinearLayoutManager(requireActivity())
-        customListBinding.categoriesListRv.adapter = listAdapter
-
-        customDialog.show()
-
-    }
-
-    fun selectProductCategory(category: String, selection: String){
-        when(selection){
-            "categories"->{
-                customDialog.dismiss()
-                binding.addProductCategory.setText(category)
-            }
-        }
     }
 
 
