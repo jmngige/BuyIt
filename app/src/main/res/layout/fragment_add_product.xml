@@ -43,6 +43,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@color/medium_grey"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toTopOf="@id/guideline1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,18 +67,6 @@
                 app:layout_constraintEnd_toEndOf="@+id/product_image"
                 app:tint="@color/white" />
 
-            <ImageView
-                android:id="@+id/edit_product_image"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="12dp"
-                android:src="@drawable/ic_edit_photo"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="@+id/product_image"
-                app:layout_constraintEnd_toEndOf="@+id/product_image"
-                app:tint="@color/white" />
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txtInput_add_product_name"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -96,7 +85,7 @@
                     android:id="@+id/add_product_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:inputType="text"
                     android:padding="15dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -119,7 +108,7 @@
                     android:id="@+id/add_product_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:padding="15dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -142,7 +131,7 @@
                     android:id="@+id/add_product_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:inputType="text"
                     android:padding="15dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -212,7 +201,7 @@
                     android:id="@+id/add_product_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:padding="15dp" />
 
             </com.google.android.material.textfield.TextInputLayout>

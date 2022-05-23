@@ -5,15 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentHomeBinding
 import com.starsolns.e_shop.ui.activities.HomeActivity
+import com.starsolns.e_shop.viewmodel.SharedViewModel
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var firebaseUser: String
+    private lateinit var auth: FirebaseAuth
+
+    private lateinit var sharedViewModel: SharedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,6 +31,16 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+
+        auth = Firebase.auth
+        firebaseUser = auth.currentUser!!.uid
+
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
+        sharedViewModel.getUserProfile(firebaseUser).observe(viewLifecycleOwner){profile->
+            if(profile.isNotEmpty()){
+                binding.homeUserName.text = "Hello, ${profile[0].firstName}"
+            }
+        }
 
         binding.addProductButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_addProductFragment)
