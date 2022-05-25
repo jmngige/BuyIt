@@ -59,6 +59,8 @@ class HomeFragment : Fragment() {
             }
         }
 
+        binding.productsRv.showShimmer()
+
         return binding.root
     }
 
