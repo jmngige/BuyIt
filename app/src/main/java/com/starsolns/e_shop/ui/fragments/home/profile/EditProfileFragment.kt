@@ -115,17 +115,7 @@ class EditProfileFragment : Fragment() {
                 .addOnSuccessListener { result ->
                     val user = result.toObject<Users>()
 
-                    val userEntity =  UserEntity(
-                            user!!.firstName,
-                            user.lastName,
-                            user.email,
-                            user.phone,
-                            user.dob,
-                            user.gender,
-                            user.id
-                        )
-
-                    if(user.profilePicture!!.isNotEmpty()){
+                    if(user?.profilePicture!!.isNotEmpty()){
                         binding.editProfileImage.load(user.profilePicture)
                     }
 

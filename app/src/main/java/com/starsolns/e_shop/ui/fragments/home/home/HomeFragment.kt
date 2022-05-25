@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import coil.load
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -81,7 +82,9 @@ class HomeFragment : Fragment() {
 
                 sharedViewModel.insertUserProfile(userEntity)
                 sharedViewModel.saveSellerUserName(user.firstName)
-
+                binding.homeProfileImage.load(user.profilePicture){
+                    crossfade(true)
+                }
             }
             .addOnFailureListener {
                 Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()

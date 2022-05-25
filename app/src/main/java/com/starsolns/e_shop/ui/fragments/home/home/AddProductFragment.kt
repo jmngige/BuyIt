@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,10 +17,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import coil.load
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -33,10 +34,14 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentAddProductBinding
+import com.starsolns.e_shop.model.Product
 import com.starsolns.e_shop.ui.activities.HomeActivity
 import com.starsolns.e_shop.util.Constants
+import com.starsolns.e_shop.util.Constants.PRODUCTS
 import com.starsolns.e_shop.util.ProgressButton
 import com.starsolns.e_shop.viewmodel.SharedViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AddProductFragment : Fragment() {
 
@@ -47,7 +52,7 @@ class AddProductFragment : Fragment() {
 
     private var productImageUri: Uri? = null
 
-    private lateinit var username: String
+    private var username: String = ""
     private lateinit var sharedViewModel: SharedViewModel
 
     private lateinit var firebaseUser: String
@@ -70,11 +75,10 @@ class AddProductFragment : Fragment() {
         }
 
         sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
-        sharedViewModel.getSellerUserName.observe(viewLifecycleOwner){
+        sharedViewModel.getSellerUserName.observe(viewLifecycleOwner) {
             username = it
         }
 
-        Log.i("TAG", username)
 
         val buttonView = binding.submitProductDetails.loginRegisterAccessButton
         dialog = ProgressButton(requireContext(), buttonView)
@@ -89,14 +93,11 @@ class AddProductFragment : Fragment() {
             ArrayAdapter(requireContext(), R.layout.category_list_item, categories)
         binding.addProductCategory.setAdapter(categoriesAdapter)
 
-        binding.submitProductDetails.loginRegisterAccessButton.setOnClickListener {
-            val category = binding.addProductCategory.text.toString()
-            Toast.makeText(requireContext(), category, Toast.LENGTH_LONG).show()
-        }
 
         binding.submitProductDetails.loginRegisterAccessButton.setOnClickListener {
             if (validateEntries()) {
                 uploadProductDetails()
+                dialog.showProgressBar()
             }
         }
 
@@ -104,26 +105,55 @@ class AddProductFragment : Fragment() {
     }
 
     private fun uploadProductDetails() {
-        val storage = Firebase.storage
-        val productsRef = storage.getReference("Images/Product Images")
-            .child(firebaseUser + "_" + System.currentTimeMillis() + ".jpg")
-        productsRef.putFile(productImageUri!!).addOnSuccessListener { snapshot ->
-            snapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener { uri ->
-                saveProductDetailsToDatabase(uri.toString())
+        lifecycleScope.launch(Dispatchers.IO) {
+            val storage = Firebase.storage
+            val productsRef = storage.getReference("Images/Product Images")
+                .child(firebaseUser + "_" + System.currentTimeMillis() + ".jpg")
+            productsRef.putFile(productImageUri!!).addOnSuccessListener { snapshot ->
+                snapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener { uri ->
+                    saveProductDetailsToDatabase(uri.toString())
+                }
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_LONG).show()
             }
-        }.addOnFailureListener {
-            Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_LONG).show()
         }
     }
 
     private fun saveProductDetailsToDatabase(imageUrl: String) {
 
+        val name = binding.addProductName.text.toString().trim()
+        val price = binding.addProductPrice.text.toString().trim()
+        val description = binding.addProductDescription.text.toString().trim()
+        val richDescription = binding.addProductRichDescription.text.toString().trim()
+        val category = binding.addProductCategory.text.toString().trim()
+        val quantity = binding.addProductQuantity.text.toString().trim()
+
+
         val db = Firebase.firestore
+        val product = Product(
+            firebaseUser,
+            username,
+            name,
+            price,
+            category,
+            quantity,
+            description,
+            richDescription,
+            imageUrl
+        )
 
 
+        lifecycleScope.launch(Dispatchers.IO) {
+            db.collection(PRODUCTS).document().set(product, SetOptions.merge())
+                .addOnSuccessListener {
+                    dialog.dismissProgressBar()
+                    findNavController().navigate(R.id.action_addProductFragment_to_homeFragment)
+                }
+                .addOnFailureListener {
+                    Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_LONG).show()
+                }
+        }
 
-
-        //db.collection("Products").document(firebaseUser).set()
 
     }
 
