@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.starsolns.e_shop.util.Constants.DATASTORE_PREF_NAME
 import com.starsolns.e_shop.util.Constants.IMAGE_STRING_KEY
+import com.starsolns.e_shop.util.Constants.SELLER_USER_NAME
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.flow.Flow
@@ -32,6 +33,24 @@ class DatastoreRepository @Inject constructor(
         }
     }
 
+    suspend fun saveUserName(userName: String){
+        context.datastore.edit {
+            it[USER_NAME] = userName
+        }
+    }
+
+    val readSellerUserName: Flow<String> = context.datastore.data
+        .catch { exception->
+            if(exception is IOException){
+                emit(emptyPreferences())
+            }else {
+                throw exception
+            }
+        }
+        .map { Pref->
+            Pref[USER_NAME] ?: ""
+        }
+
     val readImageString: Flow<String> = context.datastore.data
         .catch { exception->
             if(exception is IOException){
@@ -47,5 +66,6 @@ class DatastoreRepository @Inject constructor(
 
     companion object {
         val IMAGE_STRING = stringPreferencesKey(IMAGE_STRING_KEY)
+        val USER_NAME = stringPreferencesKey(SELLER_USER_NAME)
     }
 }

@@ -20,12 +20,14 @@ class SharedViewModel @Inject constructor(
     application: Application
 ): AndroidViewModel(application) {
 
+    val getSellerUserName = datastoreRepository.readSellerUserName.asLiveData()
 
-    fun saveImageString(imageString: String){
+    fun saveSellerUserName(username: String){
         viewModelScope.launch(Dispatchers.IO) {
-            datastoreRepository.saveImageString(imageString)
+            datastoreRepository.saveUserName(username)
         }
     }
+
 
     fun insertUserProfile(userEntity: UserEntity){
         viewModelScope.launch(Dispatchers.IO) {

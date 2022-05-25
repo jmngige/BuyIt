@@ -12,6 +12,9 @@ object Constants {
         const val DATASTORE_PREF_NAME = "profile_data"
         const val IMAGE_STRING_KEY = "load_image_string"
 
+        /** products */
+        const val SELLER_USER_NAME = "seller_username"
+
         /** Room Database */
         const val DATABASE_NAME = "user_database"
 

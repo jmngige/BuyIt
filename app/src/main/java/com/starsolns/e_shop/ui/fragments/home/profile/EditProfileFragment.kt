@@ -125,8 +125,6 @@ class EditProfileFragment : Fragment() {
                             user.id
                         )
 
-                    sharedViewModel.insertUserProfile(userEntity)
-
                     if(user.profilePicture!!.isNotEmpty()){
                         binding.editProfileImage.load(user.profilePicture)
                     }

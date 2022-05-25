@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import coil.load
 import com.google.firebase.auth.FirebaseAuth
@@ -34,6 +36,7 @@ import com.starsolns.e_shop.databinding.FragmentAddProductBinding
 import com.starsolns.e_shop.ui.activities.HomeActivity
 import com.starsolns.e_shop.util.Constants
 import com.starsolns.e_shop.util.ProgressButton
+import com.starsolns.e_shop.viewmodel.SharedViewModel
 
 class AddProductFragment : Fragment() {
 
@@ -43,6 +46,9 @@ class AddProductFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var productImageUri: Uri? = null
+
+    private lateinit var username: String
+    private lateinit var sharedViewModel: SharedViewModel
 
     private lateinit var firebaseUser: String
     private lateinit var auth: FirebaseAuth
@@ -63,6 +69,12 @@ class AddProductFragment : Fragment() {
             findNavController().navigate(R.id.action_addProductFragment_to_homeFragment)
         }
 
+        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
+        sharedViewModel.getSellerUserName.observe(viewLifecycleOwner){
+            username = it
+        }
+
+        Log.i("TAG", username)
 
         val buttonView = binding.submitProductDetails.loginRegisterAccessButton
         dialog = ProgressButton(requireContext(), buttonView)
@@ -97,8 +109,7 @@ class AddProductFragment : Fragment() {
             .child(firebaseUser + "_" + System.currentTimeMillis() + ".jpg")
         productsRef.putFile(productImageUri!!).addOnSuccessListener { snapshot ->
             snapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener { uri ->
-                //saveProductDetailsToDatabase(uri.toString())
-                Toast.makeText(requireContext(), "Uploaded successfully", Toast.LENGTH_LONG).show()
+                saveProductDetailsToDatabase(uri.toString())
             }
         }.addOnFailureListener {
             Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_LONG).show()
@@ -108,6 +119,10 @@ class AddProductFragment : Fragment() {
     private fun saveProductDetailsToDatabase(imageUrl: String) {
 
         val db = Firebase.firestore
+
+
+
+
         //db.collection("Products").document(firebaseUser).set()
 
     }
