@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
+    android:paddingEnd="8dp"
+    android:paddingBottom="8dp"
     android:layout_height="wrap_content">
 
     <View
@@ -18,15 +20,17 @@
         android:layout_width="0dp"
         android:layout_height="15dp"
         android:background="@color/grey"
+        android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/product_item_image_placeholder"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="3dp"
         android:id="@+id/product_item_name_placeholder"/>
     <View
         android:layout_width="0dp"
         android:layout_height="15dp"
         android:background="@color/grey"
+        android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/product_item_name_placeholder"
@@ -42,7 +46,6 @@
         app:layout_constraintTop_toBottomOf="@+id/product_item_price_placeholder"
         android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
         android:id="@+id/product_item_description_placeholder"/>
 
 

@@ -58,7 +58,7 @@ class HomeFragment : Fragment() {
                 (activity as HomeActivity).hideBottomNavBar()
             }
         }
-
+        getProductsFromFirebase()
         binding.productsRv.showShimmer()
 
         return binding.root
@@ -92,6 +92,16 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()
             }
     }
+
+    private fun getProductsFromFirebase(){
+        val db = Firebase.firestore
+        db.collection(Constants.PRODUCTS)
+            .get()
+            .addOnSuccessListener { document->
+                Toast.makeText(requireContext(), document.toString(), Toast.LENGTH_LONG).show()
+            }
+    }
+
 
     override fun onResume() {
         super.onResume()
