@@ -12,10 +12,11 @@ import com.starsolns.e_shop.model.Product
 class ProductsAdapter(
     private val context: Context,
     private val productsList: ArrayList<Product>
-): RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ProductsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsAdapter.ViewHolder {
-       val customBinding: ProductItemLayoutBinding = ProductItemLayoutBinding.inflate(LayoutInflater.from(context), parent, false)
+        val customBinding: ProductItemLayoutBinding =
+            ProductItemLayoutBinding.inflate(LayoutInflater.from(context), parent, false)
         return ViewHolder(customBinding)
     }
 
@@ -30,18 +31,18 @@ class ProductsAdapter(
         return productsList.size
     }
 
-    class ViewHolder(binding: ProductItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        val image = binding.productItemImage
-        val name = binding.productItemName
-        val price = binding.productItemPrice
-        val desc = binding.productItemDescription
+    class ViewHolder(binding: ProductItemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val image = binding.productItemImage
+        private val pName = binding.productItemName
+        private val price = binding.productItemPrice
+        private val desc = binding.productItemDescription
 
 
-        fun bind(product: Product){
-            name.text = product.name
+        fun bind(product: Product) {
+            pName.text = product.name
             price.text = product.price
             desc.text = product.description
-            image.load(product.productImage){
+            image.load(product.productImage) {
                 crossfade(true)
             }
         }

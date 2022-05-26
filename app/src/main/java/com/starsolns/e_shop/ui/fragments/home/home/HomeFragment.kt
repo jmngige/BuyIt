@@ -1,6 +1,7 @@
 package com.starsolns.e_shop.ui.fragments.home.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import coil.load
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -20,6 +22,7 @@ import com.starsolns.e_shop.model.Product
 import com.starsolns.e_shop.model.UserEntity
 import com.starsolns.e_shop.model.Users
 import com.starsolns.e_shop.ui.activities.HomeActivity
+import com.starsolns.e_shop.ui.adapter.ProductsAdapter
 import com.starsolns.e_shop.util.Constants
 import com.starsolns.e_shop.viewmodel.SharedViewModel
 
@@ -30,6 +33,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var firebaseUser: String
     private lateinit var auth: FirebaseAuth
+
+    private lateinit var productsList: ArrayList<Product>
 
     private lateinit var sharedViewModel: SharedViewModel
 
@@ -52,6 +57,15 @@ class HomeFragment : Fragment() {
             }
         }
 
+        productsList = arrayListOf()
+
+        val productsAdapter = ProductsAdapter(requireContext(), productsList)
+        binding.productsRv.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.productsRv.adapter = productsAdapter
+        binding.productsRv.setHasFixedSize(true)
+
+        Log.i("TAG", productsList.toString())
+        Log.i("TAG", "No products")
 
         binding.addProductButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_addProductFragment)
@@ -99,15 +113,11 @@ class HomeFragment : Fragment() {
         db.collection(Constants.PRODUCTS)
             .get()
             .addOnSuccessListener { document->
-              val productsList = ArrayList<Product>()
-
+                binding.productsRv.hideShimmer()
                 for (doc in document.documents){
                     val products = doc.toObject(Product::class.java)
                     productsList.add(products!!)
                 }
-
-                Toast.makeText(requireContext(), productsList.toString(), Toast.LENGTH_LONG).show()
-
             }
     }
 
