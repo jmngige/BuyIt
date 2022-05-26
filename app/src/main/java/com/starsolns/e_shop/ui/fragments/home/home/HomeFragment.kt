@@ -16,6 +16,7 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentHomeBinding
+import com.starsolns.e_shop.model.Product
 import com.starsolns.e_shop.model.UserEntity
 import com.starsolns.e_shop.model.Users
 import com.starsolns.e_shop.ui.activities.HomeActivity
@@ -98,7 +99,15 @@ class HomeFragment : Fragment() {
         db.collection(Constants.PRODUCTS)
             .get()
             .addOnSuccessListener { document->
-                Toast.makeText(requireContext(), document.toString(), Toast.LENGTH_LONG).show()
+              val productsList = ArrayList<Product>()
+
+                for (doc in document.documents){
+                    val products = doc.toObject(Product::class.java)
+                    productsList.add(products!!)
+                }
+
+                Toast.makeText(requireContext(), productsList.toString(), Toast.LENGTH_LONG).show()
+
             }
     }
 
