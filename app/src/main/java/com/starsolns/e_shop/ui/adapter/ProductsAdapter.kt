@@ -22,9 +22,10 @@ class ProductsAdapter(
 
     override fun onBindViewHolder(holder: ProductsAdapter.ViewHolder, position: Int) {
         val currentProduct = productsList[position]
-
         holder.bind(currentProduct)
+        holder.itemView.setOnClickListener {
 
+        }
     }
 
     override fun getItemCount(): Int {
