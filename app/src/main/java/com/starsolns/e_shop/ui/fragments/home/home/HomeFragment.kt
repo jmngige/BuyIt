@@ -63,6 +63,7 @@ class HomeFragment : Fragment() {
         binding.productsRv.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.productsRv.adapter = productsAdapter
         binding.productsRv.setHasFixedSize(true)
+        productsAdapter.notifyDataSetChanged()
 
         Log.i("TAG", productsList.toString())
         Log.i("TAG", "No products")
