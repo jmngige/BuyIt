@@ -63,6 +63,12 @@
     <string name="smartphones_hint">Smartphones</string>
     <string name="select_category_text">Select Category</string>
     <string name="add_product_image">Please add product image</string>
+    <string name="product_details_description">Product x has several features including some of the features you don\'t see in other products that you might normally see getting displayed. anyway make a purchase and we hope to see you next time, ciao.</string>
+    <string name="product_details_rich_description">Product x has several features including some of the features you don\'t see in other products that you might normally see getting displayed. anyway make a purchase and we hope to see you next time x has several features including some of the features you don\'t see in other products that you might normally see getting displayed. anyway make a purchase and we hope to see you next time, ciao.</string>
+    <string name="description_hint">Description</string>
+    <string name="chat_with_seller_hint"><u>Chat with Seller</u></string>
+    <string name="also_from_this_seller_hint">Also from this Seller</string>
+    <string name="view_all_hint">View All</string>
 
     <string-array name="categories">
         <item>Smartphones</item>
