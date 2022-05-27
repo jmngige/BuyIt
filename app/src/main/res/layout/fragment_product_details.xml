@@ -98,7 +98,7 @@
                     android:layout_height="1dp"
                     app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
                     app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
-                    android:background="@color/grey"
+                    android:background="@color/medium_grey"
                     android:layout_marginTop="7dp"
                     android:id="@+id/description_seller_line"
                     app:layout_constraintTop_toBottomOf="@id/product_detail_description"/>
@@ -152,7 +152,7 @@
                 android:layout_height="1dp"
                 app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
                 app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
-                android:background="@color/grey"
+                android:background="@color/medium_grey"
                 android:layout_marginTop="7dp"
                 android:id="@+id/seller_shop_line"
                 app:layout_constraintTop_toBottomOf="@id/seller_layout"/>
@@ -167,20 +167,20 @@
                 android:layout_marginTop="8dp">
 
                 <RelativeLayout
-                    android:paddingTop="6dp"
+                    android:id="@+id/seller_shop_title_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/seller_shop_title_layout">
+                    android:paddingTop="6dp">
 
                     <TextView
+                        android:id="@+id/sellers_store_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:fontFamily="@font/roboto_medium"
                         android:layout_alignParentStart="true"
+                        android:fontFamily="@font/roboto_medium"
                         android:text="@string/also_from_this_seller_hint"
-                        android:id="@+id/sellers_store_title"/>
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/sellers_store_view_all_title"
@@ -190,7 +190,7 @@
                         android:fontFamily="@font/roboto_medium"
                         android:text="@string/view_all_hint"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         app:drawableRightCompat="@drawable/ic_arrow_back" />
                 </RelativeLayout>
 
@@ -210,7 +210,7 @@
                 android:layout_height="1dp"
                 app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
                 app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
-                android:background="@color/grey"
+                android:background="@color/medium_grey"
                 android:layout_marginTop="7dp"
                 android:id="@+id/seller_quantity_line"
                 app:layout_constraintTop_toBottomOf="@id/seller_shop_products"/>
@@ -291,7 +291,7 @@
                 android:layout_height="1dp"
                 app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
                 app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
-                android:background="@color/grey"
+                android:background="@color/medium_grey"
                 android:layout_marginTop="7dp"
                 android:id="@+id/quantity_rich_product_description_line"
                 app:layout_constraintTop_toBottomOf="@id/quantity_layout"/>
@@ -326,7 +326,7 @@
                 android:layout_height="1dp"
                 app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
                 app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
-                android:background="@color/grey"
+                android:background="@color/medium_grey"
                 android:layout_marginTop="7dp"
                 android:id="@+id/rich_product_similar_category_description_line"
                 app:layout_constraintTop_toBottomOf="@id/product_detail_rich_description"/>

@@ -117,7 +117,8 @@ class HomeFragment : Fragment() {
                 binding.productsRv.hideShimmer()
                 for (doc in document.documents){
                     val products = doc.toObject(Product::class.java)
-                    productsList.add(products!!)
+                    products!!.product_id = doc.id
+                    productsList.add(products)
                 }
             }
     }

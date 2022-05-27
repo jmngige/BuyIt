@@ -9,6 +9,7 @@ import coil.load
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.ProductItemLayoutBinding
 import com.starsolns.e_shop.model.Product
+import com.starsolns.e_shop.ui.fragments.home.home.HomeFragmentDirections
 
 
 class ProductsAdapter(
@@ -26,7 +27,8 @@ class ProductsAdapter(
         val currentProduct = productsList[position]
         holder.bind(currentProduct)
         holder.itemView.setOnClickListener {
-            holder.itemView.findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment)
+            val action = HomeFragmentDirections.actionHomeFragmentToProductDetailsFragment(currentProduct)
+            holder.itemView.findNavController().navigate(action)
         }
     }
 

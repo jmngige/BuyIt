@@ -136,5 +136,8 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="productItem"
+            app:argType="com.starsolns.e_shop.model.Product" />
     </fragment>
 </navigation>
