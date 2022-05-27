@@ -3,8 +3,10 @@ package com.starsolns.e_shop.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.ProductItemLayoutBinding
 import com.starsolns.e_shop.model.Product
 
@@ -24,7 +26,7 @@ class ProductsAdapter(
         val currentProduct = productsList[position]
         holder.bind(currentProduct)
         holder.itemView.setOnClickListener {
-
+            holder.itemView.findNavController().navigate(R.id.action_homeFragment_to_productDetailsFragment)
         }
     }
 
