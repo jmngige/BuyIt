@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <corners android:topLeftRadius="50dp"
+        android:bottomLeftRadius="50dp"/>
+
+    <solid android:color="@color/white"/>
+    <stroke android:color="@color/order_now_button_color" android:width="2dp"/>
+
+</shape>

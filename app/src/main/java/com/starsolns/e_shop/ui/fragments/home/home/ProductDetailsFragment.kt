@@ -16,6 +16,7 @@ import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentHomeBinding
 import com.starsolns.e_shop.databinding.FragmentProductDetailsBinding
 import com.starsolns.e_shop.model.Product
+import com.starsolns.e_shop.ui.activities.HomeActivity
 import com.starsolns.e_shop.ui.adapter.ProductsAdapter
 import com.starsolns.e_shop.util.Constants
 
@@ -35,6 +36,10 @@ class ProductDetailsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentProductDetailsBinding.inflate(layoutInflater, container, false)
+
+        if(requireActivity() is HomeActivity){
+            (activity as HomeActivity).hideBottomNavBar()
+        }
 
         val product = args.productItem
 

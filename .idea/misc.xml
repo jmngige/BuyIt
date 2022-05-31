@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/access_background_btn.xml" value="0.145" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/add_to_cart_button_bg.xml" value="0.1675" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/address_bottom_sheet_layout.xml" value="0.158" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/bottom_sheet_layout.xml" value="0.158" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/forgot_pass_header_bg.xml" value="0.136" />
@@ -14,6 +15,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/ic_profile.xml" value="0.1725" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/ic_profile_placeholder.xml" value="0.176" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/ic_save.xml" value="0.158" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/order_now_button_bg.xml" value="0.1675" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/product_instock_background.xml" value="0.1675" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/product_outstock_background.xml" value="0.1675" />
         <entry key="..\:/Users/user/AndroidStudioProjects/EShop/app/src/main/res/drawable/searchview_background.xml" value="0.158" />

@@ -30,7 +30,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/add_to_cart_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/product_image_bottom_guideline">
@@ -377,6 +377,39 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/product_details_right_out_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".98" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_to_cart_button"
+        android:text="@string/add_to_cart_hint"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:tint="@color/white"
+        android:textColor="@color/order_now_button_color"
+        app:layout_constraintEnd_toStartOf="@id/order_now_button"
+        app:backgroundTint="@null"
+        android:background="@drawable/add_to_cart_button_bg"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/order_now_button"
+        android:text="@string/order_now_hint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="@id/product_details_right_out_guideline"
+        android:background="@drawable/order_now_button_bg"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
