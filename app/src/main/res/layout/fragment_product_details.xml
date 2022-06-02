@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,8 +17,7 @@
         android:src="@drawable/ic_gallery"
         app:layout_constraintBottom_toBottomOf="@id/product_image_bottom_guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/product_image_bottom_guideline"
@@ -28,7 +28,7 @@
 
 
     <ScrollView
-        android:id="@+id/scrollView3"
+        android:id="@+id/product_details_scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="14dp"
@@ -413,4 +413,4 @@
         app:layout_constraintEnd_toEndOf="@id/product_details_right_out_guideline" />
 
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
