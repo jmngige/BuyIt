@@ -5,26 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/fragment_product_details_scene"
     tools:context=".ui.fragments.home.home.ProductDetailsFragment">
 
-    <ImageView
-        android:id="@+id/product_detail_image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="20dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_gallery"
-        app:layout_constraintBottom_toBottomOf="@id/product_image_bottom_guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/product_image_bottom_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".40" />
 
 
     <ScrollView
@@ -35,12 +18,31 @@
         app:layout_constraintBottom_toTopOf="@id/add_to_cart_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/product_image_bottom_guideline">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/product_details_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/product_detail_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:padding="20dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_gallery"
+                app:layout_constraintTop_toTopOf="@id/product_details_layout"
+                app:layout_constraintBottom_toBottomOf="@id/product_image_bottom_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/product_image_bottom_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".30" />
 
             <TextView
                 android:id="@+id/product_detail_price"
@@ -50,36 +52,73 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="Ksh.40,000"
                 android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
-                app:layout_constraintTop_toTopOf="@id/product_details_layout" />
+                app:layout_constraintTop_toBottomOf="@id/product_image_bottom_guideline" />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/discount_price_hint"
+               android:fontFamily="@font/roboto_medium"
+               android:textSize="10sp"
+               android:id="@+id/product_detail_price_discount"
+               app:layout_constraintStart_toEndOf="@id/product_detail_price"
+               app:layout_constraintBottom_toBottomOf="@id/product_detail_price"
+               android:layout_marginStart="3dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-73%"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="13sp"
+                android:textColor="@android:color/holo_red_light"
+                android:id="@+id/product_item_price_discount_percentage"
+                app:layout_constraintStart_toEndOf="@id/product_detail_price_discount"
+                app:layout_constraintBottom_toBottomOf="@id/product_detail_price"
+                android:layout_marginStart="3dp"/>
+
 
             <TextView
                 android:id="@+id/product_detail_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="3dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/product_name_hint"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
                 app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
                 app:layout_constraintTop_toBottomOf="@id/product_detail_price" />
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_details_rating"
+                android:rating="3.5"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:layout_marginTop="4dp"
+                android:isIndicator="true"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
+                app:layout_constraintTop_toBottomOf="@id/product_detail_name"
+                />
 
             <TextView
                 android:id="@+id/product_detail_description_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/description_hint"
                 android:textColor="@color/dark"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
                 app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
-                app:layout_constraintTop_toBottomOf="@id/product_detail_name" />
+                app:layout_constraintTop_toBottomOf="@id/product_details_rating" />
 
             <TextView
                 android:id="@+id/product_detail_description"
@@ -90,6 +129,7 @@
                 android:textColor="@color/dark"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
                 app:layout_constraintTop_toBottomOf="@id/product_detail_description_title" />
 
@@ -108,16 +148,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
                 app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
                 app:layout_constraintTop_toBottomOf="@id/description_seller_line">
 
                 <ImageView
                     android:id="@+id/seller_shop_image"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_alignParentStart="true"
                     android:src="@drawable/ic_shop_store" />
 
@@ -126,7 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:layout_toRightOf="@id/seller_shop_image"
+                    android:layout_centerHorizontal="true"
                     android:text="@string/seller_hint"
                     android:textColor="@color/darker"
                     android:textSize="16sp" />
@@ -136,7 +176,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/seller_text"
-                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/name_hint"
@@ -148,9 +188,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="@string/chat_with_seller_hint"
-                    android:textColor="@color/darker"
+                    android:text="@string/visit_store_hint"
+                    android:background="@color/visit_store_button_color"
+                    android:padding="8dp"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
+                    app:tint="@color/white"
                     app:drawableRightCompat="@drawable/ic_arrow_back" />
 
 
@@ -166,53 +209,6 @@
                 app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
                 app:layout_constraintTop_toBottomOf="@id/seller_layout" />
 
-            <RelativeLayout
-                android:id="@+id/seller_shop_products"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
-                app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
-                app:layout_constraintTop_toBottomOf="@id/seller_shop_line">
-
-                <RelativeLayout
-                    android:id="@+id/seller_shop_title_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="6dp">
-
-                    <TextView
-                        android:id="@+id/sellers_store_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/also_from_this_seller_hint"
-                        android:textColor="@color/black"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/sellers_store_view_all_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:fontFamily="@font/roboto_medium"
-                        android:text="@string/view_all_hint"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        app:drawableRightCompat="@drawable/ic_arrow_back" />
-                </RelativeLayout>
-
-                <com.todkars.shimmer.ShimmerRecyclerView
-                    android:id="@+id/seller_product_recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/seller_shop_title_layout"
-                    android:layout_marginTop="8dp"
-                    app:shimmer_recycler_item_count="5"
-                    app:shimmer_recycler_layout="@layout/product_item_placeholder_layout" />
-
-            </RelativeLayout>
 
             <View
                 android:id="@+id/seller_quantity_line"
@@ -222,7 +218,7 @@
                 android:background="@color/medium_grey"
                 app:layout_constraintEnd_toEndOf="@id/product_details_right_guideline"
                 app:layout_constraintStart_toStartOf="@id/product_details_left_guideline"
-                app:layout_constraintTop_toBottomOf="@id/seller_shop_products" />
+                app:layout_constraintTop_toBottomOf="@id/seller_shop_line" />
 
 
             <RelativeLayout

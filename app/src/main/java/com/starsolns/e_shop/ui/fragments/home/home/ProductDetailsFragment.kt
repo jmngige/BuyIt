@@ -56,16 +56,17 @@ class ProductDetailsFragment : Fragment() {
         binding.sellerName.text = product.user_name
         binding.productDetailQuanity.text = product.quantity
         binding.productDetailRichDescription.text = product.richDescription
+        binding.productDetailsRating.rating = 2.5F
 
-        sellerProductsList = arrayListOf()
+        //sellerProductsList = arrayListOf()
         similarProductsList = arrayListOf()
 
-        val productsAdapter = ProductsAdapter(requireContext(), sellerProductsList)
-        binding.sellerProductRecyclerView.showShimmer()
-        binding.sellerProductRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, true)
-        binding.sellerProductRecyclerView.adapter = productsAdapter
-        productsAdapter.notifyDataSetChanged()
-        loadSellersProducts()
+//        val productsAdapter = ProductsAdapter(requireContext(), sellerProductsList)
+//        binding.sellerProductRecyclerView.showShimmer()
+//        binding.sellerProductRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, true)
+//        binding.sellerProductRecyclerView.adapter = productsAdapter
+//        productsAdapter.notifyDataSetChanged()
+//        loadSellersProducts()
 
         val productsAdapter2 = ProductsAdapter(requireContext(), similarProductsList)
         binding.productsInSimilarCategoryRecyclerview.showShimmer()
@@ -82,7 +83,7 @@ class ProductDetailsFragment : Fragment() {
             .whereEqualTo("user_id", sellerId)
             .get()
             .addOnSuccessListener { document->
-                binding.sellerProductRecyclerView.hideShimmer()
+                //binding.sellerProductRecyclerView.hideShimmer()
                 for (doc in document.documents){
                 val products = doc.toObject(Product::class.java)
                     sellerProductsList.add(products!!)

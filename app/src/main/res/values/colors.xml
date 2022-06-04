@@ -49,7 +49,9 @@
     <color name="changeProfileImageTextColor">#018538</color>
 
     <!-- buttons bg-->
-    <color name="order_now_button_color">#009624</color>
+    <color name="order_now_button_color">#00C853</color>
+    <color name="visit_store_button_color">#009624</color>
+
 
     <!-- Home Screen -->
     <color name="addProductTitleTextColor">#FFFFFF</color>
