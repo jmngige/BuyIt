@@ -17,6 +17,7 @@ import com.google.firebase.ktx.Firebase
 import com.starsolns.e_shop.R
 import com.starsolns.e_shop.databinding.FragmentHomeBinding
 import com.starsolns.e_shop.databinding.FragmentProductDetailsBinding
+import com.starsolns.e_shop.model.Cart
 import com.starsolns.e_shop.model.Product
 import com.starsolns.e_shop.ui.activities.HomeActivity
 import com.starsolns.e_shop.ui.adapter.ProductsAdapter
@@ -84,12 +85,18 @@ class ProductDetailsFragment : Fragment() {
             binding.orderNowButton.visibility = View.GONE
         }
 
-        addProductToCart()
+        binding.addToCartButton.setOnClickListener {
+        addProductToCart(product)
+        }
 
         return binding.root
     }
 
-    private fun addProductToCart() {
+    private fun addProductToCart(product: Product) {
+        val cartItem = Cart(
+            product.user_id, product.product_id, product.name, product.price, product.productImage, product.quantity
+        )
+
 
     }
 
