@@ -192,7 +192,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/seller_name"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Last seen 2hrs ago"
+                    android:text="@string/last_seen_hint"
                     android:textSize="10sp" />
 
                 <TextView
@@ -400,7 +400,7 @@
         android:id="@+id/add_to_cart_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/add_to_cart_button_bg"
         android:text="@string/add_to_cart_hint"
         android:textAllCaps="false"
@@ -414,7 +414,7 @@
         android:id="@+id/order_now_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/order_now_button_bg"
         android:text="@string/order_now_hint"
         android:textAllCaps="false"

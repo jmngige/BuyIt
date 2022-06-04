@@ -76,6 +76,7 @@
     <string name="order_now_hint">Order Now</string>
     <string name="visit_store_hint">Visit Store</string>
     <string name="discount_price_hint"> <strike> Ksh 42000 </strike> </string>
+    <string name="last_seen_hint">Last seen 2hrs ago</string>
 
     <string-array name="categories">
         <item>Smartphones</item>

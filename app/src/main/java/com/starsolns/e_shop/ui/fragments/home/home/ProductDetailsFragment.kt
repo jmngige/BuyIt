@@ -10,6 +10,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.starsolns.e_shop.R
@@ -29,6 +31,9 @@ class ProductDetailsFragment : Fragment() {
 
     private lateinit var sellerProductsList: ArrayList<Product>
     private lateinit var similarProductsList: ArrayList<Product>
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var firebaseUser: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,35 +66,33 @@ class ProductDetailsFragment : Fragment() {
         //sellerProductsList = arrayListOf()
         similarProductsList = arrayListOf()
 
-//        val productsAdapter = ProductsAdapter(requireContext(), sellerProductsList)
-//        binding.sellerProductRecyclerView.showShimmer()
-//        binding.sellerProductRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, true)
-//        binding.sellerProductRecyclerView.adapter = productsAdapter
-//        productsAdapter.notifyDataSetChanged()
-//        loadSellersProducts()
 
         val productsAdapter2 = ProductsAdapter(requireContext(), similarProductsList)
         binding.productsInSimilarCategoryRecyclerview.showShimmer()
         binding.productsInSimilarCategoryRecyclerview.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.productsInSimilarCategoryRecyclerview.adapter = productsAdapter2
         loadSimilarCategoryItems()
+
+        auth = Firebase.auth
+        firebaseUser = auth.currentUser!!.uid
+
+        if( firebaseUser != product.user_id){
+            binding.addToCartButton.visibility = View.VISIBLE
+            binding.orderNowButton.visibility = View.INVISIBLE
+        }else {
+            binding.addToCartButton.visibility = View.GONE
+            binding.orderNowButton.visibility = View.GONE
+        }
+
+        addProductToCart()
+
         return binding.root
     }
 
-    private fun loadSellersProducts() {
-        val sellerId = args.productItem.user_id
-        val db = Firebase.firestore
-        db.collection(Constants.PRODUCTS)
-            .whereEqualTo("user_id", sellerId)
-            .get()
-            .addOnSuccessListener { document->
-                //binding.sellerProductRecyclerView.hideShimmer()
-                for (doc in document.documents){
-                val products = doc.toObject(Product::class.java)
-                    sellerProductsList.add(products!!)
-                }
-            }
+    private fun addProductToCart() {
+
     }
+
 
     private fun loadSimilarCategoryItems() {
         val productCategory = args.productItem.category
