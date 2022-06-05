@@ -126,8 +126,8 @@ class ProductDetailsFragment : Fragment() {
         val db = Firebase.firestore
         lifecycleScope.launch(Dispatchers.IO) {
             db.collection(Constants.CART)
-                .whereEqualTo("", firebaseUser)
-                .whereEqualTo("", product.product_id)
+                .whereEqualTo("user_id", firebaseUser)
+                .whereEqualTo("product_id", product.product_id)
                 .get()
                 .addOnSuccessListener {
                     if(it.documents.size > 0){

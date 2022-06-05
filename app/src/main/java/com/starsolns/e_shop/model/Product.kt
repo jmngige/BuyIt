@@ -10,6 +10,7 @@ data class Product(
     val price: String = "",
     val category: String = "",
     val quantity: String = "",
+    val rating: String = "",
     val description: String = "",
     val richDescription: String = "",
     val productImage: String = ""
