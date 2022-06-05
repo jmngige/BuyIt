@@ -9,6 +9,8 @@ import com.starsolns.e_shop.R
 
 class CartFragment : Fragment() {
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
