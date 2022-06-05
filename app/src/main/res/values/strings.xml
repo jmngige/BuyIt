@@ -79,6 +79,9 @@
     <string name="last_seen_hint">Last seen 2hrs ago</string>
     <string name="product_added_to_cart">Added successfully</string>
     <string name="goto_cart_hint">Go To Cart</string>
+    <string name="no_items_text">No Items</string>
+    <string name="checkout_hint">Checkout</string>
+    <string name="cart_hint">Cart</string>
 
     <string-array name="categories">
         <item>Smartphones</item>
