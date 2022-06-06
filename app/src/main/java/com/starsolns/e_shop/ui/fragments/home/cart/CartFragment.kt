@@ -1,6 +1,7 @@
 package com.starsolns.e_shop.ui.fragments.home.cart
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -39,7 +40,7 @@ class CartFragment : Fragment() {
 
         cartListItems = arrayListOf()
 
-        val cartListAdapter = CartAdapter(cartListItems, requireContext())
+        val cartListAdapter = CartAdapter(requireContext(), cartListItems)
         binding.cartItemsList.layoutManager = LinearLayoutManager(requireActivity())
         binding.cartItemsList.adapter = cartListAdapter
         loadCartItems()
@@ -48,17 +49,24 @@ class CartFragment : Fragment() {
     }
 
     private fun loadCartItems(){
+        Log.i("TAG", "loading Cart Items")
         val db = Firebase.firestore
         db.collection(Constants.CART)
             .whereEqualTo("user_id", firebaseUser)
             .get()
             .addOnSuccessListener {document->
+                binding.cartItemsList.hideShimmer()
                 for(doc in document.documents){
-                    val products = doc.toObject(Cart::class.java)
-                    products?.let {
+                    val cartProduct = doc.toObject(Cart::class.java)
+                    cartProduct?.id = doc.id
+                    cartProduct?.let {
                         cartListItems.add(it)
+                        Log.i("TAG", it.toString())
                     }
                 }
+            }
+            .addOnFailureListener {
+                Log.i("TAG","Theres nothing here")
             }
     }
 

@@ -9,8 +9,8 @@ import com.starsolns.e_shop.databinding.CartItemLayoutBinding
 import com.starsolns.e_shop.model.Cart
 
 class CartAdapter(
-    private val cartList: ArrayList<Cart>,
-    private val context: Context
+    private val context: Context,
+    private val cartList: ArrayList<Cart>
 ) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartAdapter.ViewHolder {

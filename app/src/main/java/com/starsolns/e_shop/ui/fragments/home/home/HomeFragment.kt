@@ -65,8 +65,6 @@ class HomeFragment : Fragment() {
         binding.productsRv.setHasFixedSize(true)
         productsAdapter.notifyDataSetChanged()
 
-        Log.i("TAG", productsList.toString())
-        Log.i("TAG", "No products")
 
         binding.addProductButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_addProductFragment)
