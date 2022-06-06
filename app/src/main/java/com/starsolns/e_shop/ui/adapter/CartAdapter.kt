@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.starsolns.e_shop.databinding.CartItemLayoutBinding
+
 import com.starsolns.e_shop.model.Cart
 
 class CartAdapter(
@@ -29,10 +30,10 @@ class CartAdapter(
     }
 
     class ViewHolder(binding: CartItemLayoutBinding) : RecyclerView.ViewHolder(binding.root){
-        val image = binding.cartProductImage
-        val pName = binding.cartProductName
-        val price = binding.cartProductPrice
-        val count = binding.cartProductCount
+        val image = binding.cartItemImage
+        val pName = binding.cartItemName
+        val price = binding.cartItemPrice
+        val count = binding.cartItemCount
 
         fun bind(cart: Cart){
             pName.text = cart.name
