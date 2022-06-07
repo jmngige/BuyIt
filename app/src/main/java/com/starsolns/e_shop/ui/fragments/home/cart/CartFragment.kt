@@ -61,6 +61,20 @@ class CartFragment : Fragment() {
                     cartProduct?.id = doc.id
                     cartProduct?.let {
                         cartListItems.add(it)
+                        var totalPrice: Int = 0
+                        for(items in cartListItems){
+                            val price = items.price.toInt()
+                            val quantity = items.quantity.toInt()
+                            totalPrice += (price * quantity)
+                            val totalAmount = totalPrice.toString()
+                            binding.totalPriceAmount.text = totalAmount
+                        }
+                        if(cartListItems.size <= 0){
+                            binding.totalPriceAmount.visibility = View.INVISIBLE
+                            binding.proceedCheckoutButton.visibility = View.INVISIBLE
+                            binding.emptyCartImageview.visibility = View.VISIBLE
+                            binding.emptyCartText.visibility = View.VISIBLE
+                        }
                         Log.i("TAG", it.toString())
                     }
                 }
