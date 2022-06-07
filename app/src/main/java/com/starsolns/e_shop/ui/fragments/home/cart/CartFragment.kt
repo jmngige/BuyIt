@@ -77,6 +77,7 @@ class CartFragment : Fragment() {
                             binding.emptyCartImageview.visibility = View.INVISIBLE
                             binding.emptyCartText.visibility = View.INVISIBLE
                         }
+
                         var totalPrice: Int = 0
                         for(items in cartListItems){
                             val price = items.price.toInt()

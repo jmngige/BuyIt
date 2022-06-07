@@ -2,11 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@drawable/bottom_sheet_layout"
-    android:layout_height="wrap_content"
-    tools:context=".ui.fragments.home.profile.UpdateAddressFragment">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/left_guideline"
@@ -39,7 +37,7 @@
         android:id="@+id/shipping_names"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="7dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@id/right_guideline"
         app:layout_constraintStart_toStartOf="@id/left_guideline"
@@ -56,6 +54,7 @@
             <EditText
                 android:id="@+id/shipping_user_firstName"
                 android:layout_width="match_parent"
+                android:padding="10dp"
                 android:layout_height="match_parent"
                 android:hint="@string/first_name_hint"
                 android:inputType="textPersonName" />
@@ -75,6 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/last_name_hint"
+                android:padding="10dp"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -83,7 +83,7 @@
         android:id="@+id/txt_shipping_user_phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintEnd_toEndOf="@id/right_guideline"
         app:layout_constraintStart_toStartOf="@id/left_guideline"
@@ -94,6 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/phone_hint"
+            android:padding="10dp"
             android:inputType="phone" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -103,7 +104,7 @@
         android:id="@+id/region_names"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@id/right_guideline"
         app:layout_constraintStart_toStartOf="@id/left_guideline"
@@ -122,6 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/region_hint"
+                android:padding="10dp"
                 android:inputType="textPostalAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -139,6 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/town_hint"
+                android:padding="10dp"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -147,7 +150,7 @@
         android:id="@+id/txt_shipping_user_address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
         android:layout_weight="1"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -160,6 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/address_hint"
+            android:padding="10dp"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -167,7 +171,7 @@
         android:id="@+id/txt_shipping_user_address_info"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
         android:layout_weight="1"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -189,7 +193,7 @@
         layout="@layout/login_register_button"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="14dp"
         android:foreground="?attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".30" />
+        app:layout_constraintGuide_percent=".20" />
 
     <TextView
         android:id="@+id/add_shipping_address_button"
@@ -32,8 +32,8 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/shipping_address_text_bg"
         android:paddingStart="8dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="8dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="25dp"
         android:paddingBottom="5dp"
         android:text="@string/add_shipping_address_text"
         android:textAlignment="center"
