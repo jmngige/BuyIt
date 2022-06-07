@@ -100,7 +100,7 @@ class ProductDetailsFragment : Fragment() {
     private fun addProductToCart(product: Product) {
         val db = Firebase.firestore
         val cartItem = Cart(
-            firebaseUser, product.user_id, product.product_id, product.name, product.price, product.productImage, defaultQuantity
+            firebaseUser, product.user_id, product.product_id, product.name, product.price, product.productImage, defaultQuantity, product.quantity
         )
 
         lifecycleScope.launch(Dispatchers.IO) {

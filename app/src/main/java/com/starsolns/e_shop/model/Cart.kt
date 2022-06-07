@@ -7,6 +7,7 @@ data class Cart(
     val name: String = "",
     val price: String = "",
     val image: String = "",
-    val quantity: String = "",
+    var cart_quantity: String = "",
+    var stock_quantity: String = "",
     var id: String = ""
 ) {}

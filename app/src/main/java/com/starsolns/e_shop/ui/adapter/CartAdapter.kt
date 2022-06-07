@@ -38,7 +38,7 @@ class CartAdapter(
         fun bind(cart: Cart){
             pName.text = cart.name
             price.text = cart.price
-            count.text = cart.quantity
+            count.text = cart.cart_quantity
             image.load(cart.image)
         }
     }

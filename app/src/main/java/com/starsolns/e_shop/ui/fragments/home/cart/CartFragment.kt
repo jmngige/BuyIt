@@ -45,6 +45,20 @@ class CartFragment : Fragment() {
         binding.cartItemsList.adapter = cartListAdapter
         loadCartItems()
 
+        if(cartListItems.size == 0){
+            binding.totalPriceAmount.visibility = View.INVISIBLE
+            binding.totalPriceTitle.visibility = View.INVISIBLE
+            binding.proceedCheckoutButton.visibility = View.INVISIBLE
+            binding.emptyCartImageview.visibility = View.VISIBLE
+            binding.emptyCartText.visibility = View.VISIBLE
+        }else {
+            binding.totalPriceAmount.visibility = View.VISIBLE
+            binding.totalPriceTitle.visibility = View.VISIBLE
+            binding.proceedCheckoutButton.visibility = View.VISIBLE
+            binding.emptyCartImageview.visibility = View.INVISIBLE
+            binding.emptyCartText.visibility = View.INVISIBLE
+        }
+
         return binding.root
     }
 
@@ -64,16 +78,10 @@ class CartFragment : Fragment() {
                         var totalPrice: Int = 0
                         for(items in cartListItems){
                             val price = items.price.toInt()
-                            val quantity = items.quantity.toInt()
+                            val quantity = items.cart_quantity.toInt()
                             totalPrice += (price * quantity)
                             val totalAmount = totalPrice.toString()
                             binding.totalPriceAmount.text = totalAmount
-                        }
-                        if(cartListItems.size <= 0){
-                            binding.totalPriceAmount.visibility = View.INVISIBLE
-                            binding.proceedCheckoutButton.visibility = View.INVISIBLE
-                            binding.emptyCartImageview.visibility = View.VISIBLE
-                            binding.emptyCartText.visibility = View.VISIBLE
                         }
                         Log.i("TAG", it.toString())
                     }

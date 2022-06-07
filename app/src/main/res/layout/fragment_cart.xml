@@ -63,8 +63,8 @@
 
     <Button
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/cart_left_guideline"
         app:layout_constraintEnd_toEndOf="@id/cart_right_guideline"
@@ -72,7 +72,7 @@
         android:id="@+id/proceed_checkout_button"
         android:paddingTop="2dp"
         android:textAllCaps="false"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:foreground="?attr/selectableItemBackground"
         android:background="@drawable/checkout_button_bg"
         android:paddingBottom="2dp"/>
@@ -112,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.50" />
+        app:layout_constraintGuide_percent="0.60" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/cart_right_guideline"
