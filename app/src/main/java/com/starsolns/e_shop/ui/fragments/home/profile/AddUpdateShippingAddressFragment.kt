@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -29,7 +30,6 @@ class AddUpdateShippingAddressFragment : BottomSheetDialogFragment() {
     private val binding get() = _binding!!
 
     private lateinit var sharedViewModel: SharedViewModel
-    private lateinit var shippingAddressDialog: BottomSheetDialog
 
     private lateinit var buttonView: View
     private lateinit var dialog: ProgressButton
@@ -55,15 +55,6 @@ class AddUpdateShippingAddressFragment : BottomSheetDialogFragment() {
         auth = Firebase.auth
         firebaseUser = auth.currentUser!!.uid
 
-        binding.submitShippingAddressButton.loginRegisterAccessButton.setOnClickListener {
-            addShippingAddress()
-        }
-
-        return binding.root
-    }
-
-    private fun addShippingAddress() {
-
         sharedViewModel.getUserProfile(firebaseUser).observe(viewLifecycleOwner) {
             if (it.isNotEmpty()) {
                 binding.shippingUserFirstName.setText(it[0].firstName)
@@ -73,13 +64,15 @@ class AddUpdateShippingAddressFragment : BottomSheetDialogFragment() {
         }
 
         binding.submitShippingAddressButton.loginRegisterAccessButton.setOnClickListener {
-            validateInputsAndSubmit()
+            addShippingAddress()
         }
 
-
+        return binding.root
     }
 
-    private fun validateInputsAndSubmit() {
+    override fun getTheme(): Int = R.style.Theme_BottomSheetCustomStyleTheme
+
+    private fun addShippingAddress() {
         val firstName = binding.shippingUserFirstName.text.toString()
         val lastName = binding.shippingUserLastName.text.toString()
         val phone = binding.shippingUserPhone.text.toString()
@@ -104,10 +97,9 @@ class AddUpdateShippingAddressFragment : BottomSheetDialogFragment() {
                 .set(address, SetOptions.merge())
                 .addOnSuccessListener {
                     dialog.dismissProgressBar()
-                    shippingAddressDialog.dismiss()
+                    findNavController().navigate(R.id.action_addUpdateShippingAddressFragment_to_shippingAddressFragment)
                 }
                 .addOnFailureListener {
-                    shippingAddressDialog.dismiss()
                 }
         }
     }
