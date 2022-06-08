@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.auth.FirebaseAuth
@@ -34,9 +35,9 @@ class AddUpdateShippingAddressFragment : BottomSheetDialogFragment() {
     private lateinit var buttonView: View
     private lateinit var dialog: ProgressButton
 
-
     private lateinit var auth: FirebaseAuth
     private lateinit var firebaseUser: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

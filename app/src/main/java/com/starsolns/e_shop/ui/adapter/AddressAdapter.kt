@@ -3,15 +3,18 @@ package com.starsolns.e_shop.ui.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.starsolns.e_shop.databinding.AddressItemLayoutBinding
 import com.starsolns.e_shop.model.Address
+import com.starsolns.e_shop.ui.fragments.home.profile.ShippingAddressFragmentDirections
 
 class AddressAdapter(
     private val context: Context
 ): RecyclerView.Adapter<AddressAdapter.ViewHolder>() {
 
-    private var addressList = emptyList<Address>()
+    var addressList = emptyList<Address>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressAdapter.ViewHolder {
        val customBinding: AddressItemLayoutBinding = AddressItemLayoutBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -21,6 +24,7 @@ class AddressAdapter(
     override fun onBindViewHolder(holder: AddressAdapter.ViewHolder, position: Int) {
         val currentAddress = addressList[position]
         holder.bind(currentAddress)
+
     }
 
     override fun getItemCount(): Int {

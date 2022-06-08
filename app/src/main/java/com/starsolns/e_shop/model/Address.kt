@@ -1,5 +1,7 @@
 package com.starsolns.e_shop.model
 
+import java.io.Serializable
+
 data class Address (
     val user_id: String = "",
     val firstName: String = "",

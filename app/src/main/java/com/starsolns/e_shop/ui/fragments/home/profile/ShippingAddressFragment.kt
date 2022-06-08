@@ -9,8 +9,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.starsolns.e_shop.R
@@ -31,6 +33,7 @@ class ShippingAddressFragment : Fragment() {
 
     private lateinit var addressList: ArrayList<Address>
     private lateinit var addressAdapter: AddressAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,12 +65,48 @@ class ShippingAddressFragment : Fragment() {
     private fun OnItemSwiped(recyclerView: ShimmerRecyclerView){
         val onSwipeCallback = object : OnAddressItemSwipe(){
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
+                val item = addressAdapter.addressList[viewHolder.adapterPosition]
+                deleteAddress(item)
+                addressAdapter.notifyItemRemoved(viewHolder.adapterPosition)
+                restoreItem(viewHolder.itemView, item)
             }
         }
 
         val itemTouchHelper = ItemTouchHelper(onSwipeCallback)
         itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
+    private fun deleteAddress(address: Address){
+        val db = Firebase.firestore
+        db.collection(Constants.ADDRESSES)
+            .document(address.id)
+            .delete()
+            .addOnSuccessListener {
+                loadUserAddresses()
+            }
+            .addOnFailureListener {
+
+            }
+    }
+
+    private fun restoreItem(view: View, address: Address){
+        val snackBar =
+            Snackbar.make(view, "Successfully deleted ${address.address}", Snackbar.LENGTH_LONG)
+        snackBar.setAction("Undo") {
+            val db = Firebase.firestore
+            db.collection(Constants.ADDRESSES)
+                .document()
+                .set(address, SetOptions.merge())
+                .addOnSuccessListener {
+
+                }
+                .addOnFailureListener {
+
+                }
+        }
+        snackBar.show()
+
+
     }
 
     private fun loadUserAddresses(){
