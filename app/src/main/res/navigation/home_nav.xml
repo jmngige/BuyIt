@@ -67,21 +67,11 @@
             app:popUpTo="@id/profileFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_shippingAddressFragment_to_updateAddressFragment"
-            app:destination="@id/updateAddressFragment"
-            app:popUpTo="@id/updateAddressFragment"
+            android:id="@+id/action_shippingAddressFragment_to_addUpdateShippingAddressFragment"
+            app:destination="@id/addUpdateShippingAddressFragment"
+            app:popUpTo="@id/addUpdateShippingAddressFragment"
             app:popUpToInclusive="true" />
     </fragment>
-    <dialog
-        android:id="@+id/updateAddressFragment"
-        android:name="com.starsolns.e_shop.ui.fragments.home.profile.UpdateAddressFragment"
-        android:label="fragment_update_address"
-        tools:layout="@layout/fragment_update_address" >
-        <action
-            android:id="@+id/action_updateAddressFragment_to_shippingAddressFragment"
-            app:destination="@id/shippingAddressFragment"
-            app:popUpTo="@id/shippingAddressFragment" />
-    </dialog>
     <fragment
         android:id="@+id/wishlistFragment"
         android:name="com.starsolns.e_shop.ui.fragments.home.profile.WishlistFragment"
@@ -140,4 +130,15 @@
             android:name="productItem"
             app:argType="com.starsolns.e_shop.model.Product" />
     </fragment>
+    <dialog
+        android:id="@+id/addUpdateShippingAddressFragment"
+        android:name="com.starsolns.e_shop.ui.fragments.home.profile.AddUpdateShippingAddressFragment"
+        android:label="fragment_add_update_shipping_address"
+        tools:layout="@layout/fragment_add_update_shipping_address" >
+        <action
+            android:id="@+id/action_addUpdateShippingAddressFragment_to_shippingAddressFragment"
+            app:destination="@id/shippingAddressFragment"
+            app:popUpTo="@id/shippingAddressFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
 </navigation>
